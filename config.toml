@@ -1,11 +1,11 @@
 baseURL = "https://notes.yanlong.me/"
-languageCode = "en-us"
+languageCode = "zh-cn"
 title = "Yanlong notes"
 theme = "smorg"
 copyright = "&copy; notes.yanlong.me"
 
 [params]
     logotype = '<span class="has-text-weight-bold">Yanlong <span class="has-text-danger">notes</span></span>'
-    fullname = '一些记录'
+    fullname = 'The blog of Yanlong'
     footer = "感谢阅读"
     subfooter = '<i class="fab fa-github"></i> <a href="https://github.com/heyanlong">github.com/heyanlong</a>'
