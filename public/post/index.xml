@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Yanlong notes</title>
+    <link>https://notes.yanlong.me/post/</link>
+    <description>Recent content in Posts on Yanlong notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; notes.yanlong.me</copyright>
+    <lastBuildDate>Wed, 31 Jul 2019 16:31:04 +0800</lastBuildDate>
+    
+	<atom:link href="https://notes.yanlong.me/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Send Http Request Using Eventloop</title>
+      <link>https://notes.yanlong.me/post/send-http-request-using-eventloop/</link>
+      <pubDate>Wed, 31 Jul 2019 16:31:04 +0800</pubDate>
+      
+      <guid>https://notes.yanlong.me/post/send-http-request-using-eventloop/</guid>
+      <description>最近公司发起了一个黑客马拉松大赛，要求发起N个http请求时常不能叠加，如请求两个接口每个接口耗时1秒，则响应应该在1.0x秒附近，而不是2秒或更久
+分析了一下需求，理论上使用libevent可以实现，考虑到直接使用PHP的event库可能比较复杂，所以使用了react的http-client可以实现
+安装 composer require react/http-client:^0.5.9  测试程序 &amp;lt;?php header(&#39;Content-Type: text/html; charset=utf-8&#39;); require __DIR__ . &#39;/../vendor/autoload.php&#39;; $loop = React\EventLoop\Factory::create(); $client = new React\HttpClient\Client($loop); for ($i = 0; $i &amp;lt; 3; $i++) { $request = $client-&amp;gt;request(&#39;GET&#39;, &#39;http://local-api.example.com/?q=my&#39; . $i); $request-&amp;gt;on(&#39;response&#39;, function ($response) { $response-&amp;gt;on(&#39;data&#39;, function ($chunk) { echo $chunk . &amp;quot;\n&amp;quot;; }); $response-&amp;gt;on(&#39;end&#39;, function () { echo &#39;&#39;; }); }); $request-&amp;gt;on(&#39;error&#39;, function (\Exception $e) { echo $e; }); $request-&amp;gt;end(); } $s = microtime(true); $loop-&amp;gt;run(); echo microtime(true) - $s; exit;  输出结果 my0 my2 my1 1.</description>
+    </item>
+    
+    <item>
+      <title>Nginx Preview</title>
+      <link>https://notes.yanlong.me/post/nginx-preview/</link>
+      <pubDate>Wed, 31 Jul 2019 14:34:44 +0800</pubDate>
+      
+      <guid>https://notes.yanlong.me/post/nginx-preview/</guid>
+      <description>简单介绍 2004年发布第一个版本，2011年成立公司提供商业支持，2019年3月被F5 6.7亿美元收购
+拥有反向代理，负载均衡，http缓存等功能
+特点 为fastcgi 提供负载均衡
+采用epoll非阻塞io模型提供高并发能力
+Apache 作为当时全球使用率最高的http 服务器，nginx的目标就是超越apache性能并已高性能为切入点抢占http 服务器市场
+apache 采用select 模型，nginx 采用epoll模型，由于技术选型原因，nginx拥有先天优势带来高性能
+模块 http  ngx_http_core_module ngx_http_access_module 提供基础黑名单白名单功能 ngx_http_addition_module 在请求之前或者之后添加文本 ngx_http_api_module 提供 REST API 用来查看nginx各种状态 ngx_http_auth_basic_module HTTP基本身份验证判断是否有权限 ngx_http_auth_jwt_module jwt验证 ngx_http_auth_request_module 根据请求授权是否可以访问 ngx_http_autoindex_module 自动生成文件夹列表 ngx_http_browser_module 判断浏览器是否是现代浏览器与ie ngx_http_charset_module 设置响应字符集 ngx_http_dav_module WebDAV 模块 ngx_http_empty_gif_module 空白图片输出 ngx_http_f4f_module Adobe HTTP动态流 ngx_http_fastcgi_module fastcgi支持 ngx_http_flv_module flv视频支持 ngx_http_geo_module 使用ip地址进行变量映射 ngx_http_geoip_module 使用ip地址进行区域位置转换 ngx_http_grpc_module grpc代理 ngx_http_gunzip_module 在header中有gzip压缩选型但是客户端不支持gzip的时候生效 ngx_http_gzip_module 使用gzip传输数据 ngx_http_gzip_static_module 压缩后的文件存储为.gz 下次请求时直接输出文件 ngx_http_headers_module 追加响应header ngx_http_hls_module 对视频文件提供实时流访问 ngx_http_image_filter_module 对图片进行旋转，剪切 ngx_http_index_module 入口执行文件 ngx_http_js_module js模块 ngx_http_keyval_module 定义key val变量 ngx_http_limit_conn_module 限制某个ip的连接数 ngx_http_limit_req_module 限制某个ip的请求数，使用漏桶规则 ngx_http_log_module 日志 ngx_http_map_module 定义map变量 ngx_http_memcached_module 代理memcached ngx_http_mirror_module 镜像网站 ngx_http_mp4_module mp4流式传输 ngx_http_perl_module ngx_http_proxy_module 代理http ngx_http_random_index_module 随机index ngx_http_realip_module ip替换 ngx_http_referer_module 阻止无效Referer ngx_http_rewrite_module uri 重写 ngx_http_scgi_module scgi代理 ngx_http_secure_link_module 检查请求链路的真实性 ngx_http_session_log_module ngx_http_slice_module 将一个请求拆分为多个请求 ngx_http_spdy_module ngx_http_split_clients_module 定义ab测试变量，不同的客户端拆分到不同的后端 ngx_http_ssi_module ssi 支持，将文件潜入到网页 ngx_http_ssl_module ssl支持 ngx_http_status_module nginx 状态 ngx_http_stub_status_module nginx基本状态 ngx_http_sub_module 替换字符串来修改响应结果 ngx_http_upstream_module upstream模块 ngx_http_upstream_conf_module 通过http请求动态配置upstrem ngx_http_upstream_hc_module upstream中的服务器进行健康检查 ngx_http_userid_module 基于cookie设置客户端唯一标标识 ngx_http_uwsgi_module uwsgi 代理 ngx_http_v2_module http2.</description>
+    </item>
+    
+    <item>
+      <title>Make Keyboard</title>
+      <link>https://notes.yanlong.me/post/custom-keyboard/</link>
+      <pubDate>Wed, 18 Jan 2017 16:35:05 +0800</pubDate>
+      
+      <guid>https://notes.yanlong.me/post/custom-keyboard/</guid>
+      <description>看到同事都在用机械键盘来编写世界上最好的语言，自己心里痒痒😂但是找来找去也没找到合适的，还是主要穷给闹的
+后来在网上搜寻了一番找到了GH60和tmk_keyboard项目。软件硬件都有了😄搞起来
+准备  PCB绘制工具KiCad AVR C语言开发环境CrossPack-AVR 试轴器一个，包含黑，红，青，茶，四个常用轴体 制作材料一套，主要包含键盘冒，轴体若干，1N4148二级管若干，atmega32u4主控一个，恒温电烙铁一个，键盘壳一个  定制自己喜欢的布局 可以使用的键盘布局编辑器网站定制喜欢的键盘布局，在原始GH60基础之上添加了方向键 根据布局开发PCB todo</description>
+    </item>
+    
+  </channel>
+</rss>

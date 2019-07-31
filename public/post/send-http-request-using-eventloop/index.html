@@ -1,0 +1,155 @@
+<!DOCTYPE html> 
+<html lang="en-us">
+<head>
+	<title>
+		Send Http Request Using Eventloop - Yanlong notes
+	</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="index,follow">
+	<base href="https://notes.yanlong.me/">
+	<link rel="canonical" href="https://notes.yanlong.me/post/send-http-request-using-eventloop/">
+	<link rel="preload" href="https://notes.yanlong.me/css/smorg.css" as="style">
+	<link rel="stylesheet" href="https://notes.yanlong.me/css/smorg.css">
+	<meta name="generator" content="Hugo 0.56.1" />
+
+</head>
+<body>
+		
+	<nav class="navbar" aria-label="main navigation">
+		<div class="container">
+			<div class="navbar-brand">
+				<a class="navbar-item has-text-white-ter" 
+				   href="https://notes.yanlong.me/"><span class="has-text-weight-bold"><span class="has-text-weight-bold">Yanlong <span class="has-text-danger">notes</span></span></span>
+</a>
+				<div class="navbar-burger burger" data-target="navMenu">
+				  <span></span>
+				  <span></span>
+				  <span></span>
+				</div>
+			</div>
+			<div class="navbar-menu" id="navMenu">
+				<div class="navbar-end">
+					
+
+
+
+				</div>
+			</div>
+		</div>
+	</nav>
+<section class="section" itemscope itemtype="http://schema.org/WebPage">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="content">
+					<h1 class="title is-3">Send Http Request Using Eventloop</h1>
+					<p class="subtitle is-6 has-text-grey">
+					<em>Posted 
+<time datetime="2019-07-31">31 July 2019</time></em></p>
+
+
+<p>最近公司发起了一个黑客马拉松大赛，要求发起N个http请求时常不能叠加，如请求两个接口每个接口耗时1秒，则响应应该在1.0x秒附近，而不是2秒或更久</p>
+
+<p>分析了一下需求，理论上使用libevent可以实现，考虑到直接使用PHP的event库可能比较复杂，所以使用了react的http-client可以实现</p>
+
+<h2 id="安装">安装</h2>
+
+<pre><code class="language-shell">composer require react/http-client:^0.5.9
+</code></pre>
+
+<h2 id="测试程序">测试程序</h2>
+
+<pre><code class="language-php">&lt;?php
+header('Content-Type: text/html; charset=utf-8');
+require __DIR__ . '/../vendor/autoload.php';
+$loop = React\EventLoop\Factory::create();
+$client = new React\HttpClient\Client($loop);
+
+for ($i = 0; $i &lt; 3; $i++) {
+    $request = $client-&gt;request('GET', 'http://local-api.example.com/?q=my' . $i);
+    $request-&gt;on('response', function ($response) {
+        $response-&gt;on('data', function ($chunk) {
+            echo $chunk . &quot;\n&quot;;
+        });
+        $response-&gt;on('end', function () {
+            echo '';
+        });
+    });
+    $request-&gt;on('error', function (\Exception $e) {
+        echo $e;
+    });
+    $request-&gt;end();
+}
+
+$s = microtime(true);
+$loop-&gt;run();
+echo microtime(true) - $s;
+exit;
+</code></pre>
+
+<h3 id="输出结果">输出结果</h3>
+
+<p>my0 my2 my1 1.0807709693909</p>
+
+<p>通过结果得知三个接口用时1.08秒</p>
+
+					
+
+				</article>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="footer">
+  <div class="container content">
+	<div class="has-text-centered">
+		<p>感谢阅读
+			  
+		   <span class="has-text-weight-bold">Yanlong <span class="has-text-danger">notes</span></span>
+			   
+		   </p>
+		<hr>
+		<p class="has-text-grey is-size-7">
+		 <i class="fab fa-github"></i> <a href="https://github.com/heyanlong">github.com/heyanlong</a><br>
+			   
+		 &copy; notes.yanlong.me<br>
+			   
+		</p>
+	</div>
+  </div>
+</footer>
+
+
+<script type="application/ld+json">
+{ 
+	"@context": "http://schema.org", 
+	"@type": "WebPage",
+	"@id": "https:\/\/notes.yanlong.me\/post\/send-http-request-using-eventloop\/",
+	"name": "Send Http Request Using Eventloop",
+}
+</script>
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  if ($navbarBurgers.length > 0) {
+    $navbarBurgers.forEach(function ($el) {
+      $el.addEventListener('click', function () {
+        var target = $el.dataset.target;
+        var $target = document.getElementById(target);
+        $el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+  }
+});
+</script>
+ 
+
+</body>
+</html>

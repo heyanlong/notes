@@ -1,0 +1,234 @@
+<!DOCTYPE html> 
+<html lang="en-us">
+<head>
+	<title>
+		Nginx Preview - Yanlong notes
+	</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="index,follow">
+	<base href="https://notes.yanlong.me/">
+	<link rel="canonical" href="https://notes.yanlong.me/post/nginx-preview/">
+	<link rel="preload" href="https://notes.yanlong.me/css/smorg.css" as="style">
+	<link rel="stylesheet" href="https://notes.yanlong.me/css/smorg.css">
+	<meta name="generator" content="Hugo 0.56.1" />
+
+</head>
+<body>
+		
+	<nav class="navbar" aria-label="main navigation">
+		<div class="container">
+			<div class="navbar-brand">
+				<a class="navbar-item has-text-white-ter" 
+				   href="https://notes.yanlong.me/"><span class="has-text-weight-bold"><span class="has-text-weight-bold">Yanlong <span class="has-text-danger">notes</span></span></span>
+</a>
+				<div class="navbar-burger burger" data-target="navMenu">
+				  <span></span>
+				  <span></span>
+				  <span></span>
+				</div>
+			</div>
+			<div class="navbar-menu" id="navMenu">
+				<div class="navbar-end">
+					
+
+
+
+				</div>
+			</div>
+		</div>
+	</nav>
+<section class="section" itemscope itemtype="http://schema.org/WebPage">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="content">
+					<h1 class="title is-3">Nginx Preview</h1>
+					<p class="subtitle is-6 has-text-grey">
+					<em>Posted 
+<time datetime="2019-07-31">31 July 2019</time></em></p>
+
+
+<h2 id="简单介绍">简单介绍</h2>
+
+<p>2004年发布第一个版本，2011年成立公司提供商业支持，2019年3月被F5 6.7亿美元收购</p>
+
+<p>拥有反向代理，负载均衡，http缓存等功能</p>
+
+<h2 id="特点">特点</h2>
+
+<p>为fastcgi 提供负载均衡</p>
+
+<p>采用epoll非阻塞io模型提供高并发能力</p>
+
+<h2 id="apache">Apache</h2>
+
+<p>作为当时全球使用率最高的http 服务器，nginx的目标就是超越apache性能并已高性能为切入点抢占http 服务器市场</p>
+
+<p>apache 采用select 模型，nginx 采用epoll模型，由于技术选型原因，nginx拥有先天优势带来高性能</p>
+
+<h2 id="模块">模块</h2>
+
+<h3 id="http">http</h3>
+
+<ol>
+<li>ngx_http_core_module</li>
+<li>ngx_http_access_module 提供基础黑名单白名单功能</li>
+<li>ngx_http_addition_module 在请求之前或者之后添加文本</li>
+<li>ngx_http_api_module 提供 REST API 用来查看nginx各种状态</li>
+<li>ngx_http_auth_basic_module HTTP基本身份验证判断是否有权限</li>
+<li>ngx_http_auth_jwt_module jwt验证</li>
+<li>ngx_http_auth_request_module 根据请求授权是否可以访问</li>
+<li>ngx_http_autoindex_module 自动生成文件夹列表</li>
+<li>ngx_http_browser_module 判断浏览器是否是现代浏览器与ie</li>
+<li>ngx_http_charset_module 设置响应字符集</li>
+<li>ngx_http_dav_module WebDAV 模块</li>
+<li>ngx_http_empty_gif_module 空白图片输出</li>
+<li>ngx_http_f4f_module Adobe HTTP动态流</li>
+<li>ngx_http_fastcgi_module fastcgi支持</li>
+<li>ngx_http_flv_module flv视频支持</li>
+<li>ngx_http_geo_module 使用ip地址进行变量映射</li>
+<li>ngx_http_geoip_module 使用ip地址进行区域位置转换</li>
+<li>ngx_http_grpc_module grpc代理</li>
+<li>ngx_http_gunzip_module 在header中有gzip压缩选型但是客户端不支持gzip的时候生效</li>
+<li>ngx_http_gzip_module 使用gzip传输数据</li>
+<li>ngx_http_gzip_static_module 压缩后的文件存储为.gz 下次请求时直接输出文件</li>
+<li>ngx_http_headers_module 追加响应header</li>
+<li>ngx_http_hls_module 对视频文件提供实时流访问</li>
+<li>ngx_http_image_filter_module 对图片进行旋转，剪切</li>
+<li>ngx_http_index_module 入口执行文件</li>
+<li>ngx_http_js_module js模块</li>
+<li>ngx_http_keyval_module 定义key val变量</li>
+<li>ngx_http_limit_conn_module 限制某个ip的连接数</li>
+<li>ngx_http_limit_req_module 限制某个ip的请求数，使用漏桶规则</li>
+<li>ngx_http_log_module 日志</li>
+<li>ngx_http_map_module 定义map变量</li>
+<li>ngx_http_memcached_module 代理memcached</li>
+<li>ngx_http_mirror_module 镜像网站</li>
+<li>ngx_http_mp4_module mp4流式传输</li>
+<li>ngx_http_perl_module</li>
+<li>ngx_http_proxy_module 代理http</li>
+<li>ngx_http_random_index_module 随机index</li>
+<li>ngx_http_realip_module  ip替换</li>
+<li>ngx_http_referer_module 阻止无效Referer</li>
+<li>ngx_http_rewrite_module uri 重写</li>
+<li>ngx_http_scgi_module scgi代理</li>
+<li>ngx_http_secure_link_module 检查请求链路的真实性</li>
+<li>ngx_http_session_log_module</li>
+<li>ngx_http_slice_module 将一个请求拆分为多个请求</li>
+<li>ngx_http_spdy_module</li>
+<li>ngx_http_split_clients_module 定义ab测试变量，不同的客户端拆分到不同的后端</li>
+<li>ngx_http_ssi_module ssi 支持，将文件潜入到网页</li>
+<li>ngx_http_ssl_module ssl支持</li>
+<li>ngx_http_status_module nginx 状态</li>
+<li>ngx_http_stub_status_module nginx基本状态</li>
+<li>ngx_http_sub_module 替换字符串来修改响应结果</li>
+<li>ngx_http_upstream_module upstream模块</li>
+<li>ngx_http_upstream_conf_module 通过http请求动态配置upstrem</li>
+<li>ngx_http_upstream_hc_module upstream中的服务器进行健康检查</li>
+<li>ngx_http_userid_module 基于cookie设置客户端唯一标标识</li>
+<li>ngx_http_uwsgi_module uwsgi 代理</li>
+<li>ngx_http_v2_module http2.0</li>
+<li>ngx_http_xslt_module 使用XSLT 转换 xml</li>
+</ol>
+
+<h3 id="mail">mail</h3>
+
+<ol>
+<li>ngx_mail_core_module</li>
+<li>ngx_mail_auth_http_module</li>
+<li>ngx_mail_proxy_module</li>
+<li>ngx_mail_ssl_module</li>
+<li>ngx_mail_imap_module</li>
+<li>ngx_mail_pop3_module</li>
+<li>ngx_mail_smtp_module</li>
+</ol>
+
+<h3 id="stream">stream</h3>
+
+<ol>
+<li>ngx_stream_core_module</li>
+<li>ngx_stream_access_module</li>
+<li>ngx_stream_geo_module</li>
+<li>ngx_stream_geoip_module</li>
+<li>ngx_stream_js_module</li>
+<li>ngx_stream_keyval_module</li>
+<li>ngx_stream_limit_conn_module</li>
+<li>ngx_stream_log_module</li>
+<li>ngx_stream_map_module</li>
+<li>ngx_stream_proxy_module</li>
+<li>ngx_stream_realip_module</li>
+<li>ngx_stream_return_module</li>
+<li>ngx_stream_split_clients_module</li>
+<li>ngx_stream_ssl_module</li>
+<li>ngx_stream_ssl_preread_module</li>
+<li>ngx_stream_upstream_module</li>
+<li>ngx_stream_upstream_hc_module</li>
+<li>ngx_stream_zone_sync_module</li>
+</ol>
+
+<h3 id="other">other</h3>
+
+<ol>
+<li>ngx_google_perftools_module</li>
+</ol>
+
+					
+
+				</article>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="footer">
+  <div class="container content">
+	<div class="has-text-centered">
+		<p>感谢阅读
+			  
+		   <span class="has-text-weight-bold">Yanlong <span class="has-text-danger">notes</span></span>
+			   
+		   </p>
+		<hr>
+		<p class="has-text-grey is-size-7">
+		 <i class="fab fa-github"></i> <a href="https://github.com/heyanlong">github.com/heyanlong</a><br>
+			   
+		 &copy; notes.yanlong.me<br>
+			   
+		</p>
+	</div>
+  </div>
+</footer>
+
+
+<script type="application/ld+json">
+{ 
+	"@context": "http://schema.org", 
+	"@type": "WebPage",
+	"@id": "https:\/\/notes.yanlong.me\/post\/nginx-preview\/",
+	"name": "Nginx Preview",
+}
+</script>
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  if ($navbarBurgers.length > 0) {
+    $navbarBurgers.forEach(function ($el) {
+      $el.addEventListener('click', function () {
+        var target = $el.dataset.target;
+        var $target = document.getElementById(target);
+        $el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+  }
+});
+</script>
+ 
+
+</body>
+</html>
