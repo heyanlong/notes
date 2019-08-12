@@ -3,6 +3,7 @@ languageCode = "zh-cn"
 title = "Yanlong notes"
 theme = "smorg"
 copyright = "&copy; notes.yanlong.me"
+googleAnalytics = "UA-124887845-1"
 
 [params]
     logotype = '<span class="has-text-weight-bold">Yanlong - <span class="has-text-danger">notes</span></span>'
