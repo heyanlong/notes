@@ -2,26 +2,19 @@
 <html lang="zh-cn">
 <head>
 	<title>
-	Yanlong notes
-
+		进程 线程 协程 - Yanlong notes
 	</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="index,follow">
 	<base href="https://notes.yanlong.me/">
-	<link rel="canonical" href="https://notes.yanlong.me/"> 
-	<link rel="alternate" type="application/rss&#43;xml" 
-	      href="https://notes.yanlong.me/index.xml" title="Yanlong notes">
+	<link rel="canonical" href="https://notes.yanlong.me/post/process-thread-coroutine/">
 	<link rel="preload" href="https://notes.yanlong.me/css/smorg.css" as="style">
 	<link rel="stylesheet" href="https://notes.yanlong.me/css/smorg.css">
 	<meta name="generator" content="Hugo 0.56.1" />
 
 </head>
-<body> 
-	
-
-	<section class="section hero is-fullheight" itemscope itemtype="http://schema.org/HomePage">
-	<div class="hero-head">
+<body>
 		
 	<nav class="navbar" aria-label="main navigation">
 		<div class="container">
@@ -45,50 +38,38 @@
 			</div>
 		</div>
 	</nav>
+<section class="section" itemscope itemtype="http://schema.org/WebPage">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="content">
+					<h1 class="title is-3">进程 线程 协程</h1>
+					<p class="subtitle is-6 has-text-grey">
+					<em>Posted 
+<time datetime="2019-08-12">12 August 2019</time></em></p>
 
-	</div>
-	<div class="hero-body">
-		<div class="container">
-			<div class="columns">
-				<div class="column is-8 is-offset-2 has-text-centered">
-					<h1 class="title"><span class="has-text-weight-bold"><span class="has-text-weight-bold">Yanlong - <span class="has-text-danger">notes</span></span></span>
-</h1>
-					<h2 class="subtitle">
-						The blog of Yanlong
-						
-					</h2>
-					<div class="content">
+
+<h2 id="简单区别">简单区别</h2>
+
+<p>进程拥有自己独立的堆和栈，既不共享堆，亦不共享栈，进程由操作系统调度</p>
+
+<p>线程拥有自己独立的栈和共享的堆，共享堆，不共享栈，线程亦由操作系统调度</p>
+
+<p>协程和线程一样共享堆，不共享栈，协程由程序员在协程的代码里显示调度</p>
+
+<h2 id="进程">进程</h2>
+
+<p>进程是计算机管理运行程序的一种方式，一个进程下可包含一个或者多个线程。线程可以理解为子进程。</p>
+
+<p>在面向线程设计的系统中，进程本身不是基本运行单位，而是线程的容器。进程包含的状态有<code>创建</code> <code>运行</code> <code>等待</code> <code>就绪</code> <code>结束</code></p>
+
 					
-					</div>
-					<div class="columns">
-						<div class="column">
-							<h3 class="subtitle has-text-primary is-marginless">Posts</h3>
-							<ul>
-							
-							<li><a href="https://notes.yanlong.me/post/process-thread-coroutine/"><span class="icon">✎</span>进程 线程 协程</a></li>
-							
-							<li><a href="https://notes.yanlong.me/post/send-http-request-using-eventloop/"><span class="icon">✎</span>Send Http Request Using Eventloop</a></li>
-							
-							<li><a href="https://notes.yanlong.me/post/nginx-preview/"><span class="icon">✎</span>Nginx Preview</a></li>
-							
-							<li><a href="https://notes.yanlong.me/post/custom-keyboard/"><span class="icon">✎</span>Make Keyboard</a></li>
-							
-							<li><a href="https://notes.yanlong.me/post/">More posts<span class="icon">➤</span></a></li>
-							</ul>
-						</div>
-						<div class="column">
-							<h3 class="subtitle has-text-primary is-marginless">Projects</h3>
-							<ul>
-							
-							<li><a href="https://notes.yanlong.me/project/">More projects<span class="icon">➤</span></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
+
+				</article>
 			</div>
 		</div>
 	</div>
-	<div class="hero-foot">
+</section>
 
 <footer class="footer">
   <div class="container content">
@@ -110,22 +91,12 @@
 </footer>
 
 
-	</div>
-</section>
-
- 
-	
-
 <script type="application/ld+json">
 { 
 	"@context": "http://schema.org", 
-	"@type": "WebSite",
-	"mainEntityOfPage": {
-		"@type": "WebPage", 
-		"@id": "https:\/\/notes.yanlong.me\/" 
-	},
-	"name": "Yanlong notes", 
-	
+	"@type": "WebPage",
+	"@id": "https:\/\/notes.yanlong.me\/post\/process-thread-coroutine\/",
+	"name": "进程 线程 协程",
 }
 </script>
 

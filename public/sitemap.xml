@@ -4,19 +4,24 @@
   
   <url>
     <loc>https://notes.yanlong.me/post/</loc>
-    <lastmod>2019-07-31T16:31:04+08:00</lastmod>
+    <lastmod>2019-08-12T13:19:08+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://notes.yanlong.me/</loc>
+    <lastmod>2019-08-12T13:19:08+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://notes.yanlong.me/post/process-thread-coroutine/</loc>
+    <lastmod>2019-08-12T13:19:08+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://notes.yanlong.me/post/send-http-request-using-eventloop/</loc>
     <lastmod>2019-07-31T16:31:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://notes.yanlong.me/</loc>
-    <lastmod>2019-07-31T16:31:04+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
