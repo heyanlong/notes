@@ -8,4 +8,4 @@ copyright = "&copy; notes.yanlong.me"
     logotype = '<span class="has-text-weight-bold">Yanlong - <span class="has-text-danger">notes</span></span>'
     fullname = 'The blog of Yanlong'
     footer = "感谢阅读"
-    subfooter = '<i class="fab fa-github"></i> <a href="https://github.com/heyanlong">github.com/heyanlong</a>'
+    subfooter = '<a href="https://github.com/heyanlong" target="_blank">github.com/heyanlong</a></br> <a href="https://yuerblog.cc/" target="_blank">鱼儿的博客</a></br> <a href="http://www.is17.com/" target="_blank">依十七</a></br>'
