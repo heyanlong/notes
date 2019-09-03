@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://notes.yanlong.me/sitemap.xml

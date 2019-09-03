@@ -1,12 +1,56 @@
 baseURL = "https://notes.yanlong.me/"
 languageCode = "zh-cn"
 title = "Yanlong notes"
-theme = "smorg"
-copyright = "&copy; notes.yanlong.me"
+enableRobotsTXT = true
+enableEmoji = true
+theme = "jane"
+
+hasCJKLanguage = true
+paginate = 5
+rssLimit = 20
+
+copyright = "notes.yanlong.me"
 googleAnalytics = "UA-124887845-1"
 
+defaultContentLanguage = "zh-cn"
+
+[author]
+  name = "Yanlong"
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[[menu.main]]
+  name = "This is Home"
+  weight = 10
+  identifier = "home"
+  url = "/"
+[[menu.main]]
+  name = "Archives"
+  weight = 20
+  identifier = "archives"
+  url = "/post/"
+[[menu.main]]
+  name = "Tags"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
+
+
 [params]
+    since = "2011"
+    homeFullContent = false
+    rssFullContent = true
+    dateFormatToUse = "2006-01-02"
+    contentCopyright = '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
+
     logotype = '<span class="has-text-weight-bold">Yanlong - <span class="has-text-danger">notes</span></span>'
     fullname = 'The blog of Yanlong'
     footer = "感谢阅读"
     subfooter = '<a href="https://github.com/heyanlong" target="_blank">github.com/heyanlong</a> | <a href="https://yuerblog.cc/" target="_blank">鱼儿的博客</a> | <a href="http://www.is17.com/" target="_blank">依十七</a> | <a href="https://zzrdark.github.io/" target="_blank">zzrdark的技术专栏</a>'
+
+[params.social]
+  g-github = "https://github.com/heyanlong"
+
