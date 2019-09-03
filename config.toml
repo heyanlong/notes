@@ -51,6 +51,10 @@ defaultContentLanguage = "zh-cn"
     footer = "感谢阅读"
     subfooter = '<a href="https://github.com/heyanlong" target="_blank">github.com/heyanlong</a> | <a href="https://yuerblog.cc/" target="_blank">鱼儿的博客</a> | <a href="http://www.is17.com/" target="_blank">依十七</a> | <a href="https://zzrdark.github.io/" target="_blank">zzrdark的技术专栏</a>'
 
-[params.social]
-  g-github = "https://github.com/heyanlong"
+  [params.social]
+    g-github = "https://github.com/heyanlong"
+  [params.search.google]
+    enable = true
+    id = "014021697037622036594:zbkx8mp7lm1"
+    title = "Search"
 
