@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>离开开元金融 - Yanlong notes</title>
+  <title>Docker 多阶段构建 - Yanlong notes</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Yanlong" />
-  <meta name="description" content="今天离开了任职三年多的开元金融，收到了同事写的打油诗😄，承包了我一天的笑点。 延龙送别诗 紫气东来博彦处 卧龙入潜车快快 建功立业升组长 敢于邪恶周旋" />
+  <meta name="description" content="为什么要使用多阶段构建 我们在开发完成进行发版时常见场景是：服务器编译，编译出的结果导入到base image，或者一个完整的Dockerfil" />
 
 
 
@@ -34,7 +34,7 @@
 <meta name="generator" content="Hugo 0.56.1" />
 
 
-<link rel="canonical" href="https://notes.yanlong.me/post/leave-yuanf/" />
+<link rel="canonical" href="https://notes.yanlong.me/post/docker-multi-stage-build/" />
 
 
 
@@ -56,26 +56,26 @@
 
 
 
-<meta property="og:title" content="离开开元金融" />
-<meta property="og:description" content="今天离开了任职三年多的开元金融，收到了同事写的打油诗😄，承包了我一天的笑点。 延龙送别诗 紫气东来博彦处 卧龙入潜车快快 建功立业升组长 敢于邪恶周旋" />
+<meta property="og:title" content="Docker 多阶段构建" />
+<meta property="og:description" content="为什么要使用多阶段构建 我们在开发完成进行发版时常见场景是：服务器编译，编译出的结果导入到base image，或者一个完整的Dockerfil" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://notes.yanlong.me/post/leave-yuanf/" />
-<meta property="article:published_time" content="2019-08-20T15:34:47+08:00" />
-<meta property="article:modified_time" content="2019-08-20T15:34:47+08:00" />
-<meta itemprop="name" content="离开开元金融">
-<meta itemprop="description" content="今天离开了任职三年多的开元金融，收到了同事写的打油诗😄，承包了我一天的笑点。 延龙送别诗 紫气东来博彦处 卧龙入潜车快快 建功立业升组长 敢于邪恶周旋">
+<meta property="og:url" content="https://notes.yanlong.me/post/docker-multi-stage-build/" />
+<meta property="article:published_time" content="2019-10-10T10:56:32+08:00" />
+<meta property="article:modified_time" content="2019-10-10T10:56:32+08:00" />
+<meta itemprop="name" content="Docker 多阶段构建">
+<meta itemprop="description" content="为什么要使用多阶段构建 我们在开发完成进行发版时常见场景是：服务器编译，编译出的结果导入到base image，或者一个完整的Dockerfil">
 
 
-<meta itemprop="datePublished" content="2019-08-20T15:34:47&#43;08:00" />
-<meta itemprop="dateModified" content="2019-08-20T15:34:47&#43;08:00" />
-<meta itemprop="wordCount" content="250">
+<meta itemprop="datePublished" content="2019-10-10T10:56:32&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-10T10:56:32&#43;08:00" />
+<meta itemprop="wordCount" content="326">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="离开开元金融"/>
-<meta name="twitter:description" content="今天离开了任职三年多的开元金融，收到了同事写的打油诗😄，承包了我一天的笑点。 延龙送别诗 紫气东来博彦处 卧龙入潜车快快 建功立业升组长 敢于邪恶周旋"/>
+<meta name="twitter:title" content="Docker 多阶段构建"/>
+<meta name="twitter:description" content="为什么要使用多阶段构建 我们在开发完成进行发版时常见场景是：服务器编译，编译出的结果导入到base image，或者一个完整的Dockerfil"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -268,11 +268,11 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">离开开元金融</h1>
+      <h1 class="post-title">Docker 多阶段构建</h1>
       
       <div class="post-meta">
-        <time datetime="2019-08-20" class="post-time">
-          2019-08-20
+        <time datetime="2019-10-10" class="post-time">
+          2019-10-10
         </time>
         
         
@@ -292,53 +292,35 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<p>今天离开了任职三年多的开元金融，收到了同事写的打油诗😄，承包了我一天的笑点。</p>
+<h2 id="为什么要使用多阶段构建">为什么要使用多阶段构建</h2>
 
-<h2 id="延龙送别诗">延龙送别诗</h2>
+<p>我们在开发完成进行发版时常见场景是：服务器编译，编译出的结果导入到base image，或者一个完整的Dockerfile进行基础环境设置与编译，不论是那种场景都会导致发版速度慢，环境不兼容，image过大等问题</p>
 
-<p>紫气东来博彦处</p>
+<h2 id="多阶段构建例子">多阶段构建例子</h2>
 
-<p>卧龙入潜车快快</p>
+<p>利用docker multi-stage 特性，我们可以把编译阶段和运行环境写成两个FORM，看上去就是两个Dockerfile写到一起了，鹅妹子嘤</p>
 
-<p>建功立业升组长</p>
+<pre><code>FROM golang:alpine as builder
 
-<p>敢于邪恶周旋来</p>
+WORKDIR /go/src
+COPY httpserver.go .
 
-<p>奈何天时不应我</p>
+RUN go build -o myhttpserver ./httpserver.go
 
-<p>唯有弃职表不快</p>
+From alpine:latest
 
-<h2 id="无题">无题</h2>
+WORKDIR /root/
+COPY --from=builder /go/src/myhttpserver .
+RUN chmod +x /root/myhttpserver
 
-<p>本是天空最明星，岂敢苟且众人同。</p>
+ENTRYPOINT [&quot;/root/myhttpserver&quot;]
+</code></pre>
 
-<p>不可双眼容砂秽，焉能摧眉曲意迎。</p>
+<p>如上代码所示，先使用golang官方image进行程序打包，打包结果copy到运行image</p>
 
-<p>人称堪比水中龙，自信不惭世上英。</p>
+<h2 id="总结">总结</h2>
 
-<p>唯有有才横天下，何患无此一杯羹。</p>
-
-<p>头上自有头冠正，心中亦有心衡平。</p>
-
-<p>欲行哪管身前路，东南西北迎面风。</p>
-
-<h2 id="无题一">无题一</h2>
-
-<p>成败皆怨一萧何，</p>
-
-<p>事物有失又有得。</p>
-
-<p>今弃腐壤抽身去，</p>
-
-<p>免了脊梁招人戳。</p>
-
-<p>有志有才有骨气，</p>
-
-<p>何惧世上没饭吃。</p>
-
-<p>出自污泥而不染，</p>
-
-<p>祝君开出新天地。</p>
+<p>多阶段构建可以让开发者在一个Dockerfile写入多个构建过程，可以有效快速的构建出更小的image，提升CI/CD系统体验～</p>
 
     </div>
 
@@ -352,7 +334,7 @@ if (!doNotTrack) {
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2019-08-20
+      2019-10-10
       
     </span>
   </p>
@@ -373,22 +355,9 @@ if (!doNotTrack) {
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/docker-multi-stage-build/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">Docker 多阶段构建</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/apache-committer/">
-            <span class="next-text nav-default">Apache Committer</span>
+          <a class="next" href="/post/leave-yuanf/">
+            <span class="next-text nav-default">离开开元金融</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">

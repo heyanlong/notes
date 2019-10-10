@@ -7,10 +7,52 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>notes.yanlong.me</copyright>
-    <lastBuildDate>Tue, 20 Aug 2019 15:34:47 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 10 Oct 2019 10:56:32 +0800</lastBuildDate>
     
         <atom:link href="https://notes.yanlong.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker 多阶段构建</title>
+      <link>https://notes.yanlong.me/post/docker-multi-stage-build/</link>
+      <pubDate>Thu, 10 Oct 2019 10:56:32 +0800</pubDate>
+      
+      <guid>https://notes.yanlong.me/post/docker-multi-stage-build/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;为什么要使用多阶段构建&#34;&gt;为什么要使用多阶段构建&lt;/h2&gt;
+
+&lt;p&gt;我们在开发完成进行发版时常见场景是：服务器编译，编译出的结果导入到base image，或者一个完整的Dockerfile进行基础环境设置与编译，不论是那种场景都会导致发版速度慢，环境不兼容，image过大等问题&lt;/p&gt;
+
+&lt;h2 id=&#34;多阶段构建例子&#34;&gt;多阶段构建例子&lt;/h2&gt;
+
+&lt;p&gt;利用docker multi-stage 特性，我们可以把编译阶段和运行环境写成两个FORM，看上去就是两个Dockerfile写到一起了，鹅妹子嘤&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FROM golang:alpine as builder
+
+WORKDIR /go/src
+COPY httpserver.go .
+
+RUN go build -o myhttpserver ./httpserver.go
+
+From alpine:latest
+
+WORKDIR /root/
+COPY --from=builder /go/src/myhttpserver .
+RUN chmod +x /root/myhttpserver
+
+ENTRYPOINT [&amp;quot;/root/myhttpserver&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如上代码所示，先使用golang官方image进行程序打包，打包结果copy到运行image&lt;/p&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;多阶段构建可以让开发者在一个Dockerfile写入多个构建过程，可以有效快速的构建出更小的image，提升CI/CD系统体验～&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>离开开元金融</title>
