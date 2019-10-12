@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>notes.yanlong.me</copyright>
-    <lastBuildDate>Thu, 10 Oct 2019 10:56:32 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 12 Oct 2019 10:29:40 +0800</lastBuildDate>
     
 	<atom:link href="https://notes.yanlong.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>彻底删除Mac上的TeamViewer</title>
+      <link>https://notes.yanlong.me/post/delete-team-viewer-in-full/</link>
+      <pubDate>Sat, 12 Oct 2019 10:29:40 +0800</pubDate>
+      
+      <guid>https://notes.yanlong.me/post/delete-team-viewer-in-full/</guid>
+      <description>今天，微信群又炸锅了～，原因是TeamViewer这个大量使用的软件被某黑客组织拿下了后台系统，黑客可以攻击任何一台安装了TeamViewe</description>
+    </item>
     
     <item>
       <title>Docker 多阶段构建</title>

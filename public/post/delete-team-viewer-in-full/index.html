@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Yanlong notes</title>
+  <title>彻底删除Mac上的TeamViewer - Yanlong notes</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,6 +23,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Yanlong" />
+  <meta name="description" content="今天，微信群又炸锅了～，原因是TeamViewer这个大量使用的软件被某黑客组织拿下了后台系统，黑客可以攻击任何一台安装了TeamViewe" />
+
 
 
 
@@ -32,8 +34,7 @@
 <meta name="generator" content="Hugo 0.56.1" />
 
 
-<link rel="canonical" href="https://notes.yanlong.me/" />
-<link href="%7balternate%20%7bRSS%20application/rss&#43;xml%20%20index%20alternate%20%20false%20false%20true%20false%20false%200%7d%20/index.xml%20https://notes.yanlong.me/index.xml%7d" rel="alternate" type="application/rss+xml" title="Yanlong notes" />
+<link rel="canonical" href="https://notes.yanlong.me/post/delete-team-viewer-in-full/" />
 
 
 
@@ -55,18 +56,26 @@
 
 
 
-<meta property="og:title" content="Yanlong notes" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://notes.yanlong.me/" />
+<meta property="og:title" content="彻底删除Mac上的TeamViewer" />
+<meta property="og:description" content="今天，微信群又炸锅了～，原因是TeamViewer这个大量使用的软件被某黑客组织拿下了后台系统，黑客可以攻击任何一台安装了TeamViewe" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://notes.yanlong.me/post/delete-team-viewer-in-full/" />
+<meta property="article:published_time" content="2019-10-12T10:29:40+08:00" />
+<meta property="article:modified_time" content="2019-10-12T10:29:40+08:00" />
+<meta itemprop="name" content="彻底删除Mac上的TeamViewer">
+<meta itemprop="description" content="今天，微信群又炸锅了～，原因是TeamViewer这个大量使用的软件被某黑客组织拿下了后台系统，黑客可以攻击任何一台安装了TeamViewe">
 
-<meta property="og:updated_time" content="2019-10-12T10:29:40+08:00" />
-<meta itemprop="name" content="Yanlong notes">
-<meta itemprop="description" content="">
 
+<meta itemprop="datePublished" content="2019-10-12T10:29:40&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-12T10:29:40&#43;08:00" />
+<meta itemprop="wordCount" content="1209">
+
+
+
+<meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Yanlong notes"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="彻底删除Mac上的TeamViewer"/>
+<meta name="twitter:description" content="今天，微信群又炸锅了～，原因是TeamViewer这个大量使用的软件被某黑客组织拿下了后台系统，黑客可以攻击任何一台安装了TeamViewe"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -195,7 +204,7 @@ if (!doNotTrack) {
   <ul id="menu" class="menu">
     
     
-        <li class="menu-item active">
+        <li class="menu-item">
         
           
           
@@ -256,149 +265,210 @@ if (!doNotTrack) {
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-<section id="posts" class="posts">
-  
-  
+          <article class="post bg-white">
     
-  
-  
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
+    <header class="post-header">
+      <h1 class="post-title">彻底删除Mac上的TeamViewer</h1>
       
-      <a class="post-link" href="/post/send-http-request-using-eventloop/">Send Http Request Using Eventloop</a>
-    </h1>
+      <div class="post-meta">
+        <time datetime="2019-10-12" class="post-time">
+          2019-10-12
+        </time>
+        
+        
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
     
-    <div class="post-meta">
-      <time datetime="2019-07-31" class="post-time">
-        2019-07-31
-      </time>
+    
+
+    
+    <div class="post-content">
       
-      
-      
-      
+
+<p>今天，微信群又炸锅了～，原因是TeamViewer这个大量使用的软件被某黑客组织拿下了后台系统，黑客可以攻击任何一台安装了TeamViewer的电脑，好恐怖的感觉。</p>
+
+<p>到公司第一件事想卸载电脑上的TeamViewer，但是回想起来当时安装的时候是用的pkg安装方式，这种方式安装比app包安装更复杂，所以不能按照app那种直接拖入垃圾桶来解决，所以想起来写一篇教程，分享完全卸载的过程</p>
+
+<h2 id="app-和-pkg-的区别">app 和 pkg 的区别</h2>
+
+<h3 id="app">.app</h3>
+
+<p>简而言之app相当于windows的绿色软件，软件运行的所有东西都在一个文件夹，想卸载删除这个文件夹即可，所以你的app直接拖入垃圾桶就卸载完成了</p>
+
+<h3 id="pkg">pkg</h3>
+
+<p>pkg 属于复杂的安装模式，需要点击下一步等操作，直到安装完成，令人讨厌的是安装过程需要root权限，并且没有完善的卸载措施，安装完成后文件分散在系统各个目录</p>
+
+<h2 id="分析-pkg-包的内容">分析 pkg 包的内容</h2>
+
+<p>我们在官方下载的TeamViewer是dmg格式的，一般命名为TeamViewer.dmg，这是一种光盘文件双击就可以挂载到Finder，并显示内部内容，我们打开发现里面是Install TeamViewer.pkg，这时候不要双击打开，而是复制到一个新建的目录，比如我复制到了<code>~/workspace/tv</code>这个目录</p>
+
+<h3 id="查看文件类型">查看文件类型</h3>
+
+<pre><code class="language-bash">❯ file Install\ TeamViewer.pkg
+Install TeamViewer.pkg: xar archive compressed TOC: 6565, SHA-1 checksum
+</code></pre>
+
+<p>可以看出pkg其实就是xar压缩格式</p>
+
+<h3 id="使用xar解压">使用xar解压</h3>
+
+<pre><code class="language-bash">❯ xar -xf Install\ TeamViewer.pkg
+❯ ll
+total 87016
+drwx------  5 yanlong  staff   160B  1  1  1970 AuthPluginPackage.pkg
+-rw-r--r--  1 yanlong  staff   4.8K 10 12 10:22 Distribution
+drwx------  5 yanlong  staff   160B  1  1  1970 FullRestarterPackage.pkg
+drwx------  5 yanlong  staff   160B  1  1  1970 FullSilentInstallerPackage.pkg
+-rw-r--r--@ 1 yanlong  staff    42M  8  7 01:15 Install TeamViewer.pkg
+drwx------  6 yanlong  staff   192B  1  1  1970 LauncherFull.pkg
+drwx------  5 yanlong  staff   160B  1  1  1970 PriviledgedHelperPackage.pkg
+drwx------  5 yanlong  staff   160B  1  1  1970 RemotePrintingPackage.pkg
+drwx------  4 yanlong  staff   128B  1  1  1970 Resources
+drwx------  6 yanlong  staff   192B  1  1  1970 TeamViewerApp.pkg
+</code></pre>
+
+<p>解压后我们得到<code>AuthPluginPackage.pkg</code> <code>FullRestarterPackage.pkg</code> <code>FullSilentInstallerPackage.pkg</code> <code>LauncherFull.pkg</code> <code>PriviledgedHelperPackage.pkg</code> <code>RemotePrintingPackage.pkg</code> <code>TeamViewerApp.pkg</code>
+这些文件夹，其中每个文件夹里面的内容是固定的，分别为<code>Bom</code> <code>PackageInfo</code> <code>Payload</code></p>
+
+<pre><code class="language-bash">~/workspace/tv/AuthPluginPackage.pkg
+❯ ll
+total 104
+-rw-r--r--  1 yanlong  staff    35K  8  7 01:14 Bom
+-rw-r--r--  1 yanlong  staff   749B 10 12 10:22 PackageInfo
+-rw-r--r--  1 yanlong  staff    10K  8  7 01:14 Payload
+</code></pre>
+
+<h3 id="查看文件类型-1">查看文件类型</h3>
+
+<pre><code class="language-bash">❯ file Bom PackageInfo Payload
+Bom:         Mac OS X bill of materials (BOM) file
+PackageInfo: XML 1.0 document text, ASCII text
+Payload:     gzip compressed data, from Unix, original size modulo 2^32 38912
+</code></pre>
+
+<p>其实安装过程就是把Payload解压到各个目录，已<code>AuthPluginPackage.pkg</code>我们用gzip解压它的<code>Payload</code>看看里面都有什么目录</p>
+
+<pre><code class="language-bash">~/workspace/tv/AuthPluginPackage.pkg
+❯ tar zxvf Payload
+x .
+x ./TeamViewerAuthPlugin.bundle
+x ./TeamViewerAuthPlugin.bundle/Contents
+x ./TeamViewerAuthPlugin.bundle/Contents/_CodeSignature
+x ./TeamViewerAuthPlugin.bundle/Contents/_CodeSignature/CodeResources
+x ./TeamViewerAuthPlugin.bundle/Contents/MacOS
+x ./TeamViewerAuthPlugin.bundle/Contents/MacOS/TeamViewerAuthPlugin
+x ./TeamViewerAuthPlugin.bundle/Contents/Info.plist
+</code></pre>
+
+<h3 id="查找安装路径">查找安装路径</h3>
+
+<p>可以看出解压出了TeamViewerAuthPlugin.bundle文件夹，那这个文件夹安装到哪了呢？可以通过find命令查找一下</p>
+
+<pre><code class="language-bash">❯ sudo find / -name &quot;TeamViewerAuthPlugin.bundle&quot; -type d
+/Library/Security/SecurityAgentPlugins/TeamViewerAuthPlugin.bundle
+</code></pre>
+
+<h3 id="删除">删除</h3>
+
+<p>可以看到，这个文件夹被安装到了<code>/Library/Security/SecurityAgentPlugins/</code>目录下面，需要做的操作是到这个目录删除即可</p>
+
+<pre><code class="language-bash">/Library/Security/SecurityAgentPlugins
+❯ sudo rm -fr TeamViewerAuthPlugin.bundle
+</code></pre>
+
+<p>其他的pkg文件夹以此类推，执行过程都一样，全部删除完成后把TeamViewer.app拖进垃圾桶即可</p>
+
+<h2 id="另外一个简单版本">另外一个简单版本</h2>
+
+<p>以上完全是炫技操作，一点也不科学，实用价值不高，现在说一下推荐做法</p>
+
+<ol>
+<li>打开TeamViewer</li>
+<li>打开首选项Preferences，快捷键<code>cmmmand+,</code></li>
+<li>点击<code>高级</code>选项卡</li>
+<li>点击`<code>Uninstall</code>按钮</li>
+<li>卸载完成～～～</li>
+</ol>
+
     </div>
-  </header>
-  
-  <div class="post-content">
+
     
-    <div class="post-summary">
-      最近公司发起了一个黑客马拉松大赛，要求发起N个http请求时常不能叠加，如请求两个接口每个接口耗时1秒，则响应应该在1.0x秒附近，而不是2
-    </div>
-    <div class="read-more">
-      <a href="/post/send-http-request-using-eventloop/" class="read-more-link">阅读全文</a>
-    </div>
     
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Yanlong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+      2019-10-12
       
-      <a class="post-link" href="/post/nginx-preview/">Nginx Preview</a>
-    </h1>
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
     
-    <div class="post-meta">
-      <time datetime="2019-07-31" class="post-time">
-        2019-07-31
-      </time>
-      
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
     
-    <div class="post-summary">
-      简单介绍 2004年发布第一个版本，2011年成立公司提供商业支持，2019年3月被F5 6.7亿美元收购 拥有反向代理，负载均衡，http缓存等
-    </div>
-    <div class="read-more">
-      <a href="/post/nginx-preview/" class="read-more-link">阅读全文</a>
-    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/docker-multi-stage-build/">
+            <span class="next-text nav-default">Docker 多阶段构建</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
     
-  </div>
-</article>
 
   
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/custom-keyboard/">Make Keyboard</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2017-01-18" class="post-time">
-        2017-01-18
-      </time>
-      
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      看到同事都在用机械键盘来编写世界上最好的语言，自己心里痒痒😂但是找来找去也没找到合适的，还是主要穷给闹的 后来在网上搜寻了一番找到了GH60和
-    </div>
-    <div class="read-more">
-      <a href="/post/custom-keyboard/" class="read-more-link">阅读全文</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-</section>
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
-      
-      <li >
-        <a href="/">1</a>
-      </li>
-      
-      <li  class="active" >
-        <a href="/page/2/">2</a>
-      </li>
-      
-    </ul>
-  </nav>
-
-  
-  
-
-
-
-
 
         </div>
       </div>
