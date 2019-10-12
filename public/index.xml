@@ -113,6 +113,15 @@ x ./TeamViewerAuthPlugin.bundle/Contents/Info.plist
 ❯ sudo rm -fr TeamViewerAuthPlugin.bundle
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;一些运行产生的目录&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~/Library/Application Support/TeamViewer
+~/Library/Caches/ com.teamviewer.TeamViewer
+~/Library/Preferences/com.teamviewer10.plist
+~/Library/Preferences/com.teamviewer.TeamViewer.plist
+~/Library/Logs/TeamViewer
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;其他的pkg文件夹以此类推，执行过程都一样，全部删除完成后把TeamViewer.app拖进垃圾桶即可&lt;/p&gt;
 
 &lt;h2 id=&#34;另外一个简单版本&#34;&gt;另外一个简单版本&lt;/h2&gt;
@@ -123,7 +132,7 @@ x ./TeamViewerAuthPlugin.bundle/Contents/Info.plist
 &lt;li&gt;打开TeamViewer&lt;/li&gt;
 &lt;li&gt;打开首选项Preferences，快捷键&lt;code&gt;cmmmand+,&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;点击&lt;code&gt;高级&lt;/code&gt;选项卡&lt;/li&gt;
-&lt;li&gt;点击`&lt;code&gt;Uninstall&lt;/code&gt;按钮&lt;/li&gt;
+&lt;li&gt;点击&lt;code&gt;Uninstall&lt;/code&gt;按钮&lt;/li&gt;
 &lt;li&gt;卸载完成～～～&lt;/li&gt;
 &lt;/ol&gt;
 </description>

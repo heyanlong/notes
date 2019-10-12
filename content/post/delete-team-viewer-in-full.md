@@ -97,6 +97,15 @@ x ./TeamViewerAuthPlugin.bundle/Contents/Info.plist
 /Library/Security/SecurityAgentPlugins
 ❯ sudo rm -fr TeamViewerAuthPlugin.bundle
 ```
+
+一些运行产生的目录
+```bash
+~/Library/Application Support/TeamViewer
+~/Library/Caches/ com.teamviewer.TeamViewer
+~/Library/Preferences/com.teamviewer10.plist
+~/Library/Preferences/com.teamviewer.TeamViewer.plist
+~/Library/Logs/TeamViewer
+```
 其他的pkg文件夹以此类推，执行过程都一样，全部删除完成后把TeamViewer.app拖进垃圾桶即可
 
 ## 另外一个简单版本
@@ -105,6 +114,6 @@ x ./TeamViewerAuthPlugin.bundle/Contents/Info.plist
 1. 打开TeamViewer
 2. 打开首选项Preferences，快捷键`cmmmand+,`
 3. 点击`高级`选项卡
-4. 点击``Uninstall`按钮
+4. 点击`Uninstall`按钮
 5. 卸载完成～～～
 
