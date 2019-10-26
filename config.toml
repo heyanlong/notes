@@ -1,6 +1,6 @@
-baseURL = "https://notes.yanlong.me/"
+baseURL = "https://yanlong.me/"
 languageCode = "zh-cn"
-title = "Yanlong notes"
+title = "火龙果的博客"
 enableRobotsTXT = true
 enableEmoji = true
 theme = "jane"
@@ -9,7 +9,7 @@ hasCJKLanguage = true
 paginate = 5
 rssLimit = 20
 
-copyright = "notes.yanlong.me"
+copyright = "yanlong.me"
 googleAnalytics = "UA-124887845-1"
 
 defaultContentLanguage = "zh-cn"
@@ -23,17 +23,17 @@ defaultContentLanguage = "zh-cn"
   filename = "sitemap.xml"
 
 [[menu.main]]
-  name = "This is Home"
+  name = "主页"
   weight = 10
   identifier = "home"
   url = "/"
 [[menu.main]]
-  name = "Archives"
+  name = "归档"
   weight = 20
   identifier = "archives"
   url = "/post/"
 [[menu.main]]
-  name = "Tags"
+  name = "标签"
   weight = 30
   identifier = "tags"
   url = "/tags/"
@@ -55,5 +55,5 @@ defaultContentLanguage = "zh-cn"
   [params.search.google]
     enable = true
     id = "014021697037622036594:zbkx8mp7lm1"
-    title = "Search"
+    title = "搜索"
 

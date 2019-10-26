@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Yanlong notes</title>
-    <link>https://notes.yanlong.me/</link>
-    <description>Recent content on Yanlong notes</description>
+    <title>火龙果的博客</title>
+    <link>https://yanlong.me/</link>
+    <description>Recent content on 火龙果的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>notes.yanlong.me</copyright>
+    <copyright>yanlong.me</copyright>
     <lastBuildDate>Sat, 12 Oct 2019 10:29:40 +0800</lastBuildDate>
     
-        <atom:link href="https://notes.yanlong.me/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://yanlong.me/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>彻底删除Mac上的TeamViewer</title>
-      <link>https://notes.yanlong.me/post/delete-team-viewer-in-full/</link>
+      <link>https://yanlong.me/post/delete-team-viewer-in-full/</link>
       <pubDate>Sat, 12 Oct 2019 10:29:40 +0800</pubDate>
       
-      <guid>https://notes.yanlong.me/post/delete-team-viewer-in-full/</guid>
+      <guid>https://yanlong.me/post/delete-team-viewer-in-full/</guid>
       
         <description>
 
@@ -141,10 +141,10 @@ x ./TeamViewerAuthPlugin.bundle/Contents/Info.plist
     
     <item>
       <title>Docker 多阶段构建</title>
-      <link>https://notes.yanlong.me/post/docker-multi-stage-build/</link>
+      <link>https://yanlong.me/post/docker-multi-stage-build/</link>
       <pubDate>Thu, 10 Oct 2019 10:56:32 +0800</pubDate>
       
-      <guid>https://notes.yanlong.me/post/docker-multi-stage-build/</guid>
+      <guid>https://yanlong.me/post/docker-multi-stage-build/</guid>
       
         <description>
 
@@ -183,10 +183,10 @@ ENTRYPOINT [&amp;quot;/root/myhttpserver&amp;quot;]
     
     <item>
       <title>离开开元金融</title>
-      <link>https://notes.yanlong.me/post/leave-yuanf/</link>
+      <link>https://yanlong.me/post/leave-yuanf/</link>
       <pubDate>Tue, 20 Aug 2019 15:34:47 +0800</pubDate>
       
-      <guid>https://notes.yanlong.me/post/leave-yuanf/</guid>
+      <guid>https://yanlong.me/post/leave-yuanf/</guid>
       
         <description>
 
@@ -243,10 +243,10 @@ ENTRYPOINT [&amp;quot;/root/myhttpserver&amp;quot;]
     
     <item>
       <title>Apache Committer</title>
-      <link>https://notes.yanlong.me/post/apache-committer/</link>
+      <link>https://yanlong.me/post/apache-committer/</link>
       <pubDate>Mon, 12 Aug 2019 14:38:11 +0800</pubDate>
       
-      <guid>https://notes.yanlong.me/post/apache-committer/</guid>
+      <guid>https://yanlong.me/post/apache-committer/</guid>
       
         <description>
 
@@ -287,10 +287,10 @@ ENTRYPOINT [&amp;quot;/root/myhttpserver&amp;quot;]
     
     <item>
       <title>进程 线程 协程</title>
-      <link>https://notes.yanlong.me/post/process-thread-coroutine/</link>
+      <link>https://yanlong.me/post/process-thread-coroutine/</link>
       <pubDate>Mon, 12 Aug 2019 13:19:08 +0800</pubDate>
       
-      <guid>https://notes.yanlong.me/post/process-thread-coroutine/</guid>
+      <guid>https://yanlong.me/post/process-thread-coroutine/</guid>
       
         <description>
 
@@ -313,10 +313,10 @@ ENTRYPOINT [&amp;quot;/root/myhttpserver&amp;quot;]
     
     <item>
       <title>Send Http Request Using Eventloop</title>
-      <link>https://notes.yanlong.me/post/send-http-request-using-eventloop/</link>
+      <link>https://yanlong.me/post/send-http-request-using-eventloop/</link>
       <pubDate>Wed, 31 Jul 2019 16:31:04 +0800</pubDate>
       
-      <guid>https://notes.yanlong.me/post/send-http-request-using-eventloop/</guid>
+      <guid>https://yanlong.me/post/send-http-request-using-eventloop/</guid>
       
         <description>
 
@@ -370,10 +370,10 @@ exit;
     
     <item>
       <title>Nginx Preview</title>
-      <link>https://notes.yanlong.me/post/nginx-preview/</link>
+      <link>https://yanlong.me/post/nginx-preview/</link>
       <pubDate>Wed, 31 Jul 2019 14:34:44 +0800</pubDate>
       
-      <guid>https://notes.yanlong.me/post/nginx-preview/</guid>
+      <guid>https://yanlong.me/post/nginx-preview/</guid>
       
         <description>
 
@@ -506,10 +506,10 @@ exit;
     
     <item>
       <title>Make Keyboard</title>
-      <link>https://notes.yanlong.me/post/custom-keyboard/</link>
+      <link>https://yanlong.me/post/custom-keyboard/</link>
       <pubDate>Wed, 18 Jan 2017 16:35:05 +0800</pubDate>
       
-      <guid>https://notes.yanlong.me/post/custom-keyboard/</guid>
+      <guid>https://yanlong.me/post/custom-keyboard/</guid>
       
         <description>
 
@@ -529,7 +529,7 @@ exit;
 &lt;h2 id=&#34;定制自己喜欢的布局&#34;&gt;定制自己喜欢的布局&lt;/h2&gt;
 
 &lt;p&gt;可以使用的键盘布局编辑器网站定制喜欢的键盘布局，在原始GH60基础之上添加了方向键
-&lt;img src=&#34;https://notes.yanlong.me/images/keyboard-layout.png&#34; alt=&#34;keyboard&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://yanlong.me/images/keyboard-layout.png&#34; alt=&#34;keyboard&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;根据布局开发pcb&#34;&gt;根据布局开发PCB&lt;/h2&gt;
 
