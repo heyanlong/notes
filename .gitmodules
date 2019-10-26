@@ -4,3 +4,6 @@
 [submodule "themes/smorg"]
 	path = themes/smorg
 	url = https://github.com/solutionroute/hugo-smorg.git
+[submodule "themes/terminal"]
+	path = themes/terminal
+	url = https://github.com/panr/hugo-theme-terminal.git

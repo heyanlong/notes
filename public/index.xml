@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>火龙果的博客</title>
@@ -9,7 +9,7 @@
     <copyright>yanlong.me</copyright>
     <lastBuildDate>Sat, 12 Oct 2019 10:29:40 +0800</lastBuildDate>
     
-        <atom:link href="https://yanlong.me/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yanlong.me/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,125 +18,7 @@
       <pubDate>Sat, 12 Oct 2019 10:29:40 +0800</pubDate>
       
       <guid>https://yanlong.me/post/delete-team-viewer-in-full/</guid>
-      
-        <description>
-
-&lt;p&gt;今天，微信群又炸锅了～，原因是TeamViewer这个大量使用的软件被某黑客组织拿下了后台系统，黑客可以攻击任何一台安装了TeamViewer的电脑，好恐怖的感觉。&lt;/p&gt;
-
-&lt;p&gt;到公司第一件事想卸载电脑上的TeamViewer，但是回想起来当时安装的时候是用的pkg安装方式，这种方式安装比app包安装更复杂，所以不能按照app那种直接拖入垃圾桶来解决，所以想起来写一篇教程，分享完全卸载的过程&lt;/p&gt;
-
-&lt;h2 id=&#34;app-和-pkg-的区别&#34;&gt;app 和 pkg 的区别&lt;/h2&gt;
-
-&lt;h3 id=&#34;app&#34;&gt;.app&lt;/h3&gt;
-
-&lt;p&gt;简而言之app相当于windows的绿色软件，软件运行的所有东西都在一个文件夹，想卸载删除这个文件夹即可，所以你的app直接拖入垃圾桶就卸载完成了&lt;/p&gt;
-
-&lt;h3 id=&#34;pkg&#34;&gt;pkg&lt;/h3&gt;
-
-&lt;p&gt;pkg 属于复杂的安装模式，需要点击下一步等操作，直到安装完成，令人讨厌的是安装过程需要root权限，并且没有完善的卸载措施，安装完成后文件分散在系统各个目录&lt;/p&gt;
-
-&lt;h2 id=&#34;分析-pkg-包的内容&#34;&gt;分析 pkg 包的内容&lt;/h2&gt;
-
-&lt;p&gt;我们在官方下载的TeamViewer是dmg格式的，一般命名为TeamViewer.dmg，这是一种光盘文件双击就可以挂载到Finder，并显示内部内容，我们打开发现里面是Install TeamViewer.pkg，这时候不要双击打开，而是复制到一个新建的目录，比如我复制到了&lt;code&gt;~/workspace/tv&lt;/code&gt;这个目录&lt;/p&gt;
-
-&lt;h3 id=&#34;查看文件类型&#34;&gt;查看文件类型&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;❯ file Install\ TeamViewer.pkg
-Install TeamViewer.pkg: xar archive compressed TOC: 6565, SHA-1 checksum
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;可以看出pkg其实就是xar压缩格式&lt;/p&gt;
-
-&lt;h3 id=&#34;使用xar解压&#34;&gt;使用xar解压&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;❯ xar -xf Install\ TeamViewer.pkg
-❯ ll
-total 87016
-drwx------  5 yanlong  staff   160B  1  1  1970 AuthPluginPackage.pkg
--rw-r--r--  1 yanlong  staff   4.8K 10 12 10:22 Distribution
-drwx------  5 yanlong  staff   160B  1  1  1970 FullRestarterPackage.pkg
-drwx------  5 yanlong  staff   160B  1  1  1970 FullSilentInstallerPackage.pkg
--rw-r--r--@ 1 yanlong  staff    42M  8  7 01:15 Install TeamViewer.pkg
-drwx------  6 yanlong  staff   192B  1  1  1970 LauncherFull.pkg
-drwx------  5 yanlong  staff   160B  1  1  1970 PriviledgedHelperPackage.pkg
-drwx------  5 yanlong  staff   160B  1  1  1970 RemotePrintingPackage.pkg
-drwx------  4 yanlong  staff   128B  1  1  1970 Resources
-drwx------  6 yanlong  staff   192B  1  1  1970 TeamViewerApp.pkg
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;解压后我们得到&lt;code&gt;AuthPluginPackage.pkg&lt;/code&gt; &lt;code&gt;FullRestarterPackage.pkg&lt;/code&gt; &lt;code&gt;FullSilentInstallerPackage.pkg&lt;/code&gt; &lt;code&gt;LauncherFull.pkg&lt;/code&gt; &lt;code&gt;PriviledgedHelperPackage.pkg&lt;/code&gt; &lt;code&gt;RemotePrintingPackage.pkg&lt;/code&gt; &lt;code&gt;TeamViewerApp.pkg&lt;/code&gt;
-这些文件夹，其中每个文件夹里面的内容是固定的，分别为&lt;code&gt;Bom&lt;/code&gt; &lt;code&gt;PackageInfo&lt;/code&gt; &lt;code&gt;Payload&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~/workspace/tv/AuthPluginPackage.pkg
-❯ ll
-total 104
--rw-r--r--  1 yanlong  staff    35K  8  7 01:14 Bom
--rw-r--r--  1 yanlong  staff   749B 10 12 10:22 PackageInfo
--rw-r--r--  1 yanlong  staff    10K  8  7 01:14 Payload
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;查看文件类型-1&#34;&gt;查看文件类型&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;❯ file Bom PackageInfo Payload
-Bom:         Mac OS X bill of materials (BOM) file
-PackageInfo: XML 1.0 document text, ASCII text
-Payload:     gzip compressed data, from Unix, original size modulo 2^32 38912
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;其实安装过程就是把Payload解压到各个目录，已&lt;code&gt;AuthPluginPackage.pkg&lt;/code&gt;我们用gzip解压它的&lt;code&gt;Payload&lt;/code&gt;看看里面都有什么目录&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~/workspace/tv/AuthPluginPackage.pkg
-❯ tar zxvf Payload
-x .
-x ./TeamViewerAuthPlugin.bundle
-x ./TeamViewerAuthPlugin.bundle/Contents
-x ./TeamViewerAuthPlugin.bundle/Contents/_CodeSignature
-x ./TeamViewerAuthPlugin.bundle/Contents/_CodeSignature/CodeResources
-x ./TeamViewerAuthPlugin.bundle/Contents/MacOS
-x ./TeamViewerAuthPlugin.bundle/Contents/MacOS/TeamViewerAuthPlugin
-x ./TeamViewerAuthPlugin.bundle/Contents/Info.plist
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;查找安装路径&#34;&gt;查找安装路径&lt;/h3&gt;
-
-&lt;p&gt;可以看出解压出了TeamViewerAuthPlugin.bundle文件夹，那这个文件夹安装到哪了呢？可以通过find命令查找一下&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;❯ sudo find / -name &amp;quot;TeamViewerAuthPlugin.bundle&amp;quot; -type d
-/Library/Security/SecurityAgentPlugins/TeamViewerAuthPlugin.bundle
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;删除&#34;&gt;删除&lt;/h3&gt;
-
-&lt;p&gt;可以看到，这个文件夹被安装到了&lt;code&gt;/Library/Security/SecurityAgentPlugins/&lt;/code&gt;目录下面，需要做的操作是到这个目录删除即可&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/Library/Security/SecurityAgentPlugins
-❯ sudo rm -fr TeamViewerAuthPlugin.bundle
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;一些运行产生的目录&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~/Library/Application Support/TeamViewer
-~/Library/Caches/ com.teamviewer.TeamViewer
-~/Library/Preferences/com.teamviewer10.plist
-~/Library/Preferences/com.teamviewer.TeamViewer.plist
-~/Library/Logs/TeamViewer
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;其他的pkg文件夹以此类推，执行过程都一样，全部删除完成后把TeamViewer.app拖进垃圾桶即可&lt;/p&gt;
-
-&lt;h2 id=&#34;另外一个简单版本&#34;&gt;另外一个简单版本&lt;/h2&gt;
-
-&lt;p&gt;以上完全是炫技操作，一点也不科学，实用价值不高，现在说一下推荐做法&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;打开TeamViewer&lt;/li&gt;
-&lt;li&gt;打开首选项Preferences，快捷键&lt;code&gt;cmmmand+,&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;点击&lt;code&gt;高级&lt;/code&gt;选项卡&lt;/li&gt;
-&lt;li&gt;点击&lt;code&gt;Uninstall&lt;/code&gt;按钮&lt;/li&gt;
-&lt;li&gt;卸载完成～～～&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-      
+      <description>今天，微信群又炸锅了～，原因是TeamViewer这个大量使用的软件被某黑客组织拿下了后台系统，黑客可以攻击任何一台安装了TeamViewe</description>
     </item>
     
     <item>
@@ -145,40 +27,7 @@ x ./TeamViewerAuthPlugin.bundle/Contents/Info.plist
       <pubDate>Thu, 10 Oct 2019 10:56:32 +0800</pubDate>
       
       <guid>https://yanlong.me/post/docker-multi-stage-build/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;为什么要使用多阶段构建&#34;&gt;为什么要使用多阶段构建&lt;/h2&gt;
-
-&lt;p&gt;我们在开发完成进行发版时常见场景是：服务器编译，编译出的结果导入到base image，或者一个完整的Dockerfile进行基础环境设置与编译，不论是那种场景都会导致发版速度慢，环境不兼容，image过大等问题&lt;/p&gt;
-
-&lt;h2 id=&#34;多阶段构建例子&#34;&gt;多阶段构建例子&lt;/h2&gt;
-
-&lt;p&gt;利用docker multi-stage 特性，我们可以把编译阶段和运行环境写成两个FORM，看上去就是两个Dockerfile写到一起了，鹅妹子嘤&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;FROM golang:alpine as builder
-
-WORKDIR /go/src
-COPY httpserver.go .
-
-RUN go build -o myhttpserver ./httpserver.go
-
-From alpine:latest
-
-WORKDIR /root/
-COPY --from=builder /go/src/myhttpserver .
-RUN chmod +x /root/myhttpserver
-
-ENTRYPOINT [&amp;quot;/root/myhttpserver&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如上代码所示，先使用golang官方image进行程序打包，打包结果copy到运行image&lt;/p&gt;
-
-&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
-
-&lt;p&gt;多阶段构建可以让开发者在一个Dockerfile写入多个构建过程，可以有效快速的构建出更小的image，提升CI/CD系统体验～&lt;/p&gt;
-</description>
-      
+      <description>为什么要使用多阶段构建 我们在开发完成进行发版时常见场景是：服务器编译，编译出的结果导入到base image，或者一个完整的Dockerfil</description>
     </item>
     
     <item>
@@ -187,58 +36,7 @@ ENTRYPOINT [&amp;quot;/root/myhttpserver&amp;quot;]
       <pubDate>Tue, 20 Aug 2019 15:34:47 +0800</pubDate>
       
       <guid>https://yanlong.me/post/leave-yuanf/</guid>
-      
-        <description>
-
-&lt;p&gt;今天离开了任职三年多的开元金融，收到了同事写的打油诗😄，承包了我一天的笑点。&lt;/p&gt;
-
-&lt;h2 id=&#34;延龙送别诗&#34;&gt;延龙送别诗&lt;/h2&gt;
-
-&lt;p&gt;紫气东来博彦处&lt;/p&gt;
-
-&lt;p&gt;卧龙入潜车快快&lt;/p&gt;
-
-&lt;p&gt;建功立业升组长&lt;/p&gt;
-
-&lt;p&gt;敢于邪恶周旋来&lt;/p&gt;
-
-&lt;p&gt;奈何天时不应我&lt;/p&gt;
-
-&lt;p&gt;唯有弃职表不快&lt;/p&gt;
-
-&lt;h2 id=&#34;无题&#34;&gt;无题&lt;/h2&gt;
-
-&lt;p&gt;本是天空最明星，岂敢苟且众人同。&lt;/p&gt;
-
-&lt;p&gt;不可双眼容砂秽，焉能摧眉曲意迎。&lt;/p&gt;
-
-&lt;p&gt;人称堪比水中龙，自信不惭世上英。&lt;/p&gt;
-
-&lt;p&gt;唯有有才横天下，何患无此一杯羹。&lt;/p&gt;
-
-&lt;p&gt;头上自有头冠正，心中亦有心衡平。&lt;/p&gt;
-
-&lt;p&gt;欲行哪管身前路，东南西北迎面风。&lt;/p&gt;
-
-&lt;h2 id=&#34;无题一&#34;&gt;无题一&lt;/h2&gt;
-
-&lt;p&gt;成败皆怨一萧何，&lt;/p&gt;
-
-&lt;p&gt;事物有失又有得。&lt;/p&gt;
-
-&lt;p&gt;今弃腐壤抽身去，&lt;/p&gt;
-
-&lt;p&gt;免了脊梁招人戳。&lt;/p&gt;
-
-&lt;p&gt;有志有才有骨气，&lt;/p&gt;
-
-&lt;p&gt;何惧世上没饭吃。&lt;/p&gt;
-
-&lt;p&gt;出自污泥而不染，&lt;/p&gt;
-
-&lt;p&gt;祝君开出新天地。&lt;/p&gt;
-</description>
-      
+      <description>今天离开了任职三年多的开元金融，收到了同事写的打油诗😄，承包了我一天的笑点。 延龙送别诗 紫气东来博彦处 卧龙入潜车快快 建功立业升组长 敢于邪恶周旋</description>
     </item>
     
     <item>
@@ -247,42 +45,7 @@ ENTRYPOINT [&amp;quot;/root/myhttpserver&amp;quot;]
       <pubDate>Mon, 12 Aug 2019 14:38:11 +0800</pubDate>
       
       <guid>https://yanlong.me/post/apache-committer/</guid>
-      
-        <description>
-
-&lt;p&gt;前几天收到SkyWalking作者吴晟先生的邀请，对于我在SkyWalking PHP相关的工作表示认可&lt;/p&gt;
-
-&lt;p&gt;经过几天的等待后，SkyWalking PMC通过了提名committer的请求，开心啊。&lt;/p&gt;
-
-&lt;h2 id=&#34;审核&#34;&gt;审核&lt;/h2&gt;
-
-&lt;p&gt;接下来就是Apache Committer相关的审核，相对比较简单，以下几步&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;下载icla.pdf 打印并填写个人信息&lt;/li&gt;
-&lt;li&gt;扫描填写好的icla 到一个pdf文件&lt;/li&gt;
-&lt;li&gt;对icla.pdf 进行gpg加密，生成密钥&lt;/li&gt;
-&lt;li&gt;发送相关文件到apache并抄送SkyWalking项目组&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;以上步骤完成后需要等待1到3个工作日的审批，期间apache基金会秘书会回复邮件确认ical相关信息，
-处理完成后会下发apache ID，到此已成为Apache Committer并拥有apache邮箱&lt;/p&gt;
-
-&lt;h2 id=&#34;绑定github&#34;&gt;绑定GitHub&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;通过id.apache.org登陆到分配的账号内，绑定自己的GitHub用户名&lt;/li&gt;
-&lt;li&gt;GitHub账号内开启两步认证&lt;/li&gt;
-&lt;li&gt;使用 &lt;a href=&#34;https://gitbox.apache.org/setup/&#34; target=&#34;_blank&#34;&gt;GitBox&lt;/a&gt;设置apache账户与GitHub账户的关系&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
-
-&lt;p&gt;账号申请操作看似简单，但得到社区的认可需要大量的时间去维护项目、修复bug、推广项目。
-最初的想法只是让PHP模块简单一点，功能多一点，如今得到apache邮箱加成也算是对自己努力的一种奖励。
-相比邮箱而言自己对PHP内核的认识更深了一些，这才是真正的收获。&lt;/p&gt;
-</description>
-      
+      <description>前几天收到SkyWalking作者吴晟先生的邀请，对于我在SkyWalking PHP相关的工作表示认可 经过几天的等待后，SkyWalking</description>
     </item>
     
     <item>
@@ -291,24 +54,7 @@ ENTRYPOINT [&amp;quot;/root/myhttpserver&amp;quot;]
       <pubDate>Mon, 12 Aug 2019 13:19:08 +0800</pubDate>
       
       <guid>https://yanlong.me/post/process-thread-coroutine/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;简单区别&#34;&gt;简单区别&lt;/h2&gt;
-
-&lt;p&gt;进程拥有自己独立的堆和栈，既不共享堆，亦不共享栈，进程由操作系统调度&lt;/p&gt;
-
-&lt;p&gt;线程拥有自己独立的栈和共享的堆，共享堆，不共享栈，线程亦由操作系统调度&lt;/p&gt;
-
-&lt;p&gt;协程和线程一样共享堆，不共享栈，协程由程序员在协程的代码里显示调度&lt;/p&gt;
-
-&lt;h2 id=&#34;进程&#34;&gt;进程&lt;/h2&gt;
-
-&lt;p&gt;进程是计算机管理运行程序的一种方式，一个进程下可包含一个或者多个线程。线程可以理解为子进程。&lt;/p&gt;
-
-&lt;p&gt;在面向线程设计的系统中，进程本身不是基本运行单位，而是线程的容器。进程包含的状态有&lt;code&gt;创建&lt;/code&gt; &lt;code&gt;运行&lt;/code&gt; &lt;code&gt;等待&lt;/code&gt; &lt;code&gt;就绪&lt;/code&gt; &lt;code&gt;结束&lt;/code&gt;&lt;/p&gt;
-</description>
-      
+      <description>简单区别 进程拥有自己独立的堆和栈，既不共享堆，亦不共享栈，进程由操作系统调度 线程拥有自己独立的栈和共享的堆，共享堆，不共享栈，线程亦由操作系</description>
     </item>
     
     <item>
@@ -317,55 +63,7 @@ ENTRYPOINT [&amp;quot;/root/myhttpserver&amp;quot;]
       <pubDate>Wed, 31 Jul 2019 16:31:04 +0800</pubDate>
       
       <guid>https://yanlong.me/post/send-http-request-using-eventloop/</guid>
-      
-        <description>
-
-&lt;p&gt;最近公司发起了一个黑客马拉松大赛，要求发起N个http请求时常不能叠加，如请求两个接口每个接口耗时1秒，则响应应该在1.0x秒附近，而不是2秒或更久&lt;/p&gt;
-
-&lt;p&gt;分析了一下需求，理论上使用libevent可以实现，考虑到直接使用PHP的event库可能比较复杂，所以使用了react的http-client可以实现&lt;/p&gt;
-
-&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;composer require react/http-client:^0.5.9
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;测试程序&#34;&gt;测试程序&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php
-header(&#39;Content-Type: text/html; charset=utf-8&#39;);
-require __DIR__ . &#39;/../vendor/autoload.php&#39;;
-$loop = React\EventLoop\Factory::create();
-$client = new React\HttpClient\Client($loop);
-
-for ($i = 0; $i &amp;lt; 3; $i++) {
-    $request = $client-&amp;gt;request(&#39;GET&#39;, &#39;http://local-api.example.com/?q=my&#39; . $i);
-    $request-&amp;gt;on(&#39;response&#39;, function ($response) {
-        $response-&amp;gt;on(&#39;data&#39;, function ($chunk) {
-            echo $chunk . &amp;quot;\n&amp;quot;;
-        });
-        $response-&amp;gt;on(&#39;end&#39;, function () {
-            echo &#39;&#39;;
-        });
-    });
-    $request-&amp;gt;on(&#39;error&#39;, function (\Exception $e) {
-        echo $e;
-    });
-    $request-&amp;gt;end();
-}
-
-$s = microtime(true);
-$loop-&amp;gt;run();
-echo microtime(true) - $s;
-exit;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;输出结果&#34;&gt;输出结果&lt;/h3&gt;
-
-&lt;p&gt;my0 my2 my1 1.0807709693909&lt;/p&gt;
-
-&lt;p&gt;通过结果得知三个接口用时1.08秒&lt;/p&gt;
-</description>
-      
+      <description>最近公司发起了一个黑客马拉松大赛，要求发起N个http请求时常不能叠加，如请求两个接口每个接口耗时1秒，则响应应该在1.0x秒附近，而不是2</description>
     </item>
     
     <item>
@@ -374,134 +72,7 @@ exit;
       <pubDate>Wed, 31 Jul 2019 14:34:44 +0800</pubDate>
       
       <guid>https://yanlong.me/post/nginx-preview/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;简单介绍&#34;&gt;简单介绍&lt;/h2&gt;
-
-&lt;p&gt;2004年发布第一个版本，2011年成立公司提供商业支持，2019年3月被F5 6.7亿美元收购&lt;/p&gt;
-
-&lt;p&gt;拥有反向代理，负载均衡，http缓存等功能&lt;/p&gt;
-
-&lt;h2 id=&#34;特点&#34;&gt;特点&lt;/h2&gt;
-
-&lt;p&gt;为fastcgi 提供负载均衡&lt;/p&gt;
-
-&lt;p&gt;采用epoll非阻塞io模型提供高并发能力&lt;/p&gt;
-
-&lt;h2 id=&#34;apache&#34;&gt;Apache&lt;/h2&gt;
-
-&lt;p&gt;作为当时全球使用率最高的http 服务器，nginx的目标就是超越apache性能并已高性能为切入点抢占http 服务器市场&lt;/p&gt;
-
-&lt;p&gt;apache 采用select 模型，nginx 采用epoll模型，由于技术选型原因，nginx拥有先天优势带来高性能&lt;/p&gt;
-
-&lt;h2 id=&#34;模块&#34;&gt;模块&lt;/h2&gt;
-
-&lt;h3 id=&#34;http&#34;&gt;http&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;ngx_http_core_module&lt;/li&gt;
-&lt;li&gt;ngx_http_access_module 提供基础黑名单白名单功能&lt;/li&gt;
-&lt;li&gt;ngx_http_addition_module 在请求之前或者之后添加文本&lt;/li&gt;
-&lt;li&gt;ngx_http_api_module 提供 REST API 用来查看nginx各种状态&lt;/li&gt;
-&lt;li&gt;ngx_http_auth_basic_module HTTP基本身份验证判断是否有权限&lt;/li&gt;
-&lt;li&gt;ngx_http_auth_jwt_module jwt验证&lt;/li&gt;
-&lt;li&gt;ngx_http_auth_request_module 根据请求授权是否可以访问&lt;/li&gt;
-&lt;li&gt;ngx_http_autoindex_module 自动生成文件夹列表&lt;/li&gt;
-&lt;li&gt;ngx_http_browser_module 判断浏览器是否是现代浏览器与ie&lt;/li&gt;
-&lt;li&gt;ngx_http_charset_module 设置响应字符集&lt;/li&gt;
-&lt;li&gt;ngx_http_dav_module WebDAV 模块&lt;/li&gt;
-&lt;li&gt;ngx_http_empty_gif_module 空白图片输出&lt;/li&gt;
-&lt;li&gt;ngx_http_f4f_module Adobe HTTP动态流&lt;/li&gt;
-&lt;li&gt;ngx_http_fastcgi_module fastcgi支持&lt;/li&gt;
-&lt;li&gt;ngx_http_flv_module flv视频支持&lt;/li&gt;
-&lt;li&gt;ngx_http_geo_module 使用ip地址进行变量映射&lt;/li&gt;
-&lt;li&gt;ngx_http_geoip_module 使用ip地址进行区域位置转换&lt;/li&gt;
-&lt;li&gt;ngx_http_grpc_module grpc代理&lt;/li&gt;
-&lt;li&gt;ngx_http_gunzip_module 在header中有gzip压缩选型但是客户端不支持gzip的时候生效&lt;/li&gt;
-&lt;li&gt;ngx_http_gzip_module 使用gzip传输数据&lt;/li&gt;
-&lt;li&gt;ngx_http_gzip_static_module 压缩后的文件存储为.gz 下次请求时直接输出文件&lt;/li&gt;
-&lt;li&gt;ngx_http_headers_module 追加响应header&lt;/li&gt;
-&lt;li&gt;ngx_http_hls_module 对视频文件提供实时流访问&lt;/li&gt;
-&lt;li&gt;ngx_http_image_filter_module 对图片进行旋转，剪切&lt;/li&gt;
-&lt;li&gt;ngx_http_index_module 入口执行文件&lt;/li&gt;
-&lt;li&gt;ngx_http_js_module js模块&lt;/li&gt;
-&lt;li&gt;ngx_http_keyval_module 定义key val变量&lt;/li&gt;
-&lt;li&gt;ngx_http_limit_conn_module 限制某个ip的连接数&lt;/li&gt;
-&lt;li&gt;ngx_http_limit_req_module 限制某个ip的请求数，使用漏桶规则&lt;/li&gt;
-&lt;li&gt;ngx_http_log_module 日志&lt;/li&gt;
-&lt;li&gt;ngx_http_map_module 定义map变量&lt;/li&gt;
-&lt;li&gt;ngx_http_memcached_module 代理memcached&lt;/li&gt;
-&lt;li&gt;ngx_http_mirror_module 镜像网站&lt;/li&gt;
-&lt;li&gt;ngx_http_mp4_module mp4流式传输&lt;/li&gt;
-&lt;li&gt;ngx_http_perl_module&lt;/li&gt;
-&lt;li&gt;ngx_http_proxy_module 代理http&lt;/li&gt;
-&lt;li&gt;ngx_http_random_index_module 随机index&lt;/li&gt;
-&lt;li&gt;ngx_http_realip_module  ip替换&lt;/li&gt;
-&lt;li&gt;ngx_http_referer_module 阻止无效Referer&lt;/li&gt;
-&lt;li&gt;ngx_http_rewrite_module uri 重写&lt;/li&gt;
-&lt;li&gt;ngx_http_scgi_module scgi代理&lt;/li&gt;
-&lt;li&gt;ngx_http_secure_link_module 检查请求链路的真实性&lt;/li&gt;
-&lt;li&gt;ngx_http_session_log_module&lt;/li&gt;
-&lt;li&gt;ngx_http_slice_module 将一个请求拆分为多个请求&lt;/li&gt;
-&lt;li&gt;ngx_http_spdy_module&lt;/li&gt;
-&lt;li&gt;ngx_http_split_clients_module 定义ab测试变量，不同的客户端拆分到不同的后端&lt;/li&gt;
-&lt;li&gt;ngx_http_ssi_module ssi 支持，将文件潜入到网页&lt;/li&gt;
-&lt;li&gt;ngx_http_ssl_module ssl支持&lt;/li&gt;
-&lt;li&gt;ngx_http_status_module nginx 状态&lt;/li&gt;
-&lt;li&gt;ngx_http_stub_status_module nginx基本状态&lt;/li&gt;
-&lt;li&gt;ngx_http_sub_module 替换字符串来修改响应结果&lt;/li&gt;
-&lt;li&gt;ngx_http_upstream_module upstream模块&lt;/li&gt;
-&lt;li&gt;ngx_http_upstream_conf_module 通过http请求动态配置upstrem&lt;/li&gt;
-&lt;li&gt;ngx_http_upstream_hc_module upstream中的服务器进行健康检查&lt;/li&gt;
-&lt;li&gt;ngx_http_userid_module 基于cookie设置客户端唯一标标识&lt;/li&gt;
-&lt;li&gt;ngx_http_uwsgi_module uwsgi 代理&lt;/li&gt;
-&lt;li&gt;ngx_http_v2_module http2.0&lt;/li&gt;
-&lt;li&gt;ngx_http_xslt_module 使用XSLT 转换 xml&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;mail&#34;&gt;mail&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;ngx_mail_core_module&lt;/li&gt;
-&lt;li&gt;ngx_mail_auth_http_module&lt;/li&gt;
-&lt;li&gt;ngx_mail_proxy_module&lt;/li&gt;
-&lt;li&gt;ngx_mail_ssl_module&lt;/li&gt;
-&lt;li&gt;ngx_mail_imap_module&lt;/li&gt;
-&lt;li&gt;ngx_mail_pop3_module&lt;/li&gt;
-&lt;li&gt;ngx_mail_smtp_module&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;stream&#34;&gt;stream&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;ngx_stream_core_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_access_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_geo_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_geoip_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_js_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_keyval_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_limit_conn_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_log_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_map_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_proxy_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_realip_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_return_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_split_clients_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_ssl_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_ssl_preread_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_upstream_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_upstream_hc_module&lt;/li&gt;
-&lt;li&gt;ngx_stream_zone_sync_module&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;other&#34;&gt;other&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;ngx_google_perftools_module&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-      
+      <description>简单介绍 2004年发布第一个版本，2011年成立公司提供商业支持，2019年3月被F5 6.7亿美元收购 拥有反向代理，负载均衡，http缓存等</description>
     </item>
     
     <item>
@@ -510,32 +81,7 @@ exit;
       <pubDate>Wed, 18 Jan 2017 16:35:05 +0800</pubDate>
       
       <guid>https://yanlong.me/post/custom-keyboard/</guid>
-      
-        <description>
-
-&lt;p&gt;看到同事都在用机械键盘来编写世界上最好的语言，自己心里痒痒😂但是找来找去也没找到合适的，还是主要穷给闹的&lt;/p&gt;
-
-&lt;p&gt;后来在网上搜寻了一番找到了GH60和tmk_keyboard项目。软件硬件都有了😄搞起来&lt;/p&gt;
-
-&lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;PCB绘制工具KiCad&lt;/li&gt;
-&lt;li&gt;AVR C语言开发环境CrossPack-AVR&lt;/li&gt;
-&lt;li&gt;试轴器一个，包含黑，红，青，茶，四个常用轴体&lt;/li&gt;
-&lt;li&gt;制作材料一套，主要包含键盘冒，轴体若干，1N4148二级管若干，atmega32u4主控一个，恒温电烙铁一个，键盘壳一个&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;定制自己喜欢的布局&#34;&gt;定制自己喜欢的布局&lt;/h2&gt;
-
-&lt;p&gt;可以使用的键盘布局编辑器网站定制喜欢的键盘布局，在原始GH60基础之上添加了方向键
-&lt;img src=&#34;https://yanlong.me/images/keyboard-layout.png&#34; alt=&#34;keyboard&#34; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;根据布局开发pcb&#34;&gt;根据布局开发PCB&lt;/h2&gt;
-
-&lt;p&gt;todo&lt;/p&gt;
-</description>
-      
+      <description>看到同事都在用机械键盘来编写世界上最好的语言，自己心里痒痒😂但是找来找去也没找到合适的，还是主要穷给闹的 后来在网上搜寻了一番找到了GH60和</description>
     </item>
     
   </channel>

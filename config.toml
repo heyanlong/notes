@@ -1,59 +1,21 @@
 baseURL = "https://yanlong.me/"
 languageCode = "zh-cn"
+defaultContentLanguage = "zh-ch"
+theme = "terminal"
 title = "火龙果的博客"
-enableRobotsTXT = true
-enableEmoji = true
-theme = "jane"
+paginate = 5
 
 hasCJKLanguage = true
-paginate = 5
-rssLimit = 20
 
 copyright = "yanlong.me"
-googleAnalytics = "UA-124887845-1"
-
-defaultContentLanguage = "zh-cn"
 
 [author]
   name = "Yanlong"
 
-[sitemap]
-  changefreq = "weekly"
-  priority = 0.5
-  filename = "sitemap.xml"
-
-[[menu.main]]
-  name = "主页"
-  weight = 10
-  identifier = "home"
-  url = "/"
-[[menu.main]]
-  name = "归档"
-  weight = 20
-  identifier = "archives"
-  url = "/post/"
-[[menu.main]]
-  name = "标签"
-  weight = 30
-  identifier = "tags"
-  url = "/tags/"
-
-
 [params]
-    since = "2011"
-    homeFullContent = false
-    rssFullContent = true
-    dateFormatToUse = "2006-01-02"
-    contentCopyright = '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
-
-    logotype = '<span class="has-text-weight-bold">Yanlong - <span class="has-text-danger">notes</span></span>'
-    fullname = 'The blog of Yanlong'
-    footer = "感谢阅读"
-
-  [params.social]
-    g-github = "https://github.com/heyanlong"
-  [params.search.google]
-    enable = true
-    id = "014021697037622036594:zbkx8mp7lm1"
-    title = "搜索"
-
+    contentTypeName = "post"
+    fullWidthTheme = false
+    centerTheme = true
+    subtitle = "分享学到的知识"
+[params.logo]
+    logoText = "火龙果的博客"
