@@ -1,5 +1,5 @@
 ---
-title: "Github Actions"
+title: "Github Actions 简介"
 date: 2019-11-07T11:46:04+08:00
 draft: false
 cover: "/images/github-actions/actions.png"
