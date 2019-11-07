@@ -47,11 +47,11 @@ keywords: ["github", "github actions", "ci", "cd", "持续集成", "持续部署
 定义监听的事件类型
 
 如：在push时触发
-```shell
+```yml
 on: push
 ```
 如果需要多个，则写成数组模式
-```shell
+```yml
 on: [push, pull_request]
 ```
 
@@ -60,7 +60,7 @@ on: [push, pull_request]
 定义触发工作流程的事件类型。
 
 如：
-```shell
+```yml
 on:
   release:
     types: [published, created]
@@ -70,7 +70,7 @@ on:
 
 使用push和pull_request事件时，可以将工作流配置为在特定分支或标签上运行。如果仅定义tags或仅定义branches，则工作流将不会运行影响未定义的Git引用的事件。
 
-```shell
+```yml
 on:
   push:
     branches:
@@ -81,7 +81,7 @@ on:
     - v1.*
 ```
 排除模式
-```shell
+```yml
 on:
   push:
     branches-ignore:
@@ -95,7 +95,7 @@ on:
 `on.<push|pull_request>.paths`
 
 使用push和pull_request事件时，可以将工作流配置为在至少一个文件不匹配paths-ignore或至少一个修改的文件与已配置匹配时运行。
-```shell
+```yml
 on:
   push:
     paths-ignore:
@@ -106,7 +106,7 @@ on:
 
 可以使用POSIX cron语法安排工作流在特定UTC时间运行。
 
-```shell
+```yml
 on:
   schedule:
     - cron:  '*/15 * * * *'
@@ -125,7 +125,7 @@ on:
 
 每个job都可以设置一个id。
 
-```shell
+```yml
 jobs:
   first_job:
     name: first job
@@ -139,7 +139,7 @@ jobs:
 
 设置job依赖，比如job2依赖job1
 
-```shell
+```yml
 jobs:
   job1:
   job2:
@@ -150,7 +150,7 @@ jobs:
 
 运行job所需的操作系统
 
-```shell
+```yml
 runs-on: ubuntu-latest
 runs-on: [ubuntu-latest, windows-latest]
 ```
@@ -159,7 +159,7 @@ runs-on: [ubuntu-latest, windows-latest]
 
 一个job包含一系列steps，steps可以运行命令。
 
-```shell
+```yml
 name: Greeting from Mona
 
 on: push
@@ -187,7 +187,7 @@ jobs:
 
 创建一个策略，在不同的操作系统下运行任务，例如在两个不同的操作系统上运行3个node版本
 
-```shell
+```yml
 runs-on: ${{ matrix.os }}
 strategy:
   matrix:
@@ -203,7 +203,7 @@ steps:
 
 指定任务运行容器
 
-```shell
+```yml
 jobs:
   my_job:
     container:
@@ -221,7 +221,7 @@ jobs:
 
 job依赖的其他服务，如mysql，redis
 
-```shell
+```yml
 services:
   nginx:
     image: nginx

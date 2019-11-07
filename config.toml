@@ -16,6 +16,7 @@ copyright = "yanlong.me"
     contentTypeName = "post"
     fullWidthTheme = false
     centerTheme = true
+    themeColor = "blue"
     subtitle = "分享学到的知识"
 [params.logo]
     logoText = "火龙果的博客"
