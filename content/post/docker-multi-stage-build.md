@@ -31,6 +31,28 @@ ENTRYPOINT ["/root/myhttpserver"]
 
 如上代码所示，先使用golang官方image进行程序打包，打包结果copy到运行image
 
+## 使用ARG参数
+ARG参数是docker在18版本中新增的特性，可以在Dockerfile中指定一个ARG变量，构建时传入参数，达到动态构建的目的
+我们可以将上面的Dockerfile改造：
+```
+ARG BASE_IMAGE1
+FROM BASE_IMAGE1 as builder
+
+WORKDIR /go/src
+COPY httpserver.go .
+
+RUN go build -o myhttpserver ./httpserver.go
+
+From BASE_IMAGE2
+
+WORKDIR /root/
+COPY --from=builder /go/src/myhttpserver .
+RUN chmod +x /root/myhttpserver
+
+ENTRYPOINT ["/root/myhttpserver"]
+```
+通过docker build --build-arg [BASE_IMAGE1=golang:alpine,BASE_IMAGE2=alpine:latest]进行构建
+
 ## 总结
 
 多阶段构建可以让开发者在一个Dockerfile写入多个构建过程，可以有效快速的构建出更小的image，提升CI/CD系统体验～
