@@ -17,11 +17,11 @@
 {{- end }}
 
 <!-- Icons -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ "img/apple-touch-icon-144-precomposed.png" | absURL }}">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="{{ "favicon-apple.png" | absURL }}">
 {{ if isset $.Site.Params "favicon" }}
 <link rel="shortcut icon" href="{{ $.Site.Params.favicon | absURL }}">
 {{ else }}
-<link rel="shortcut icon" href="{{ printf "img/favicon/%s.png" $.Site.Params.ThemeColor | absURL }}">
+<link rel="shortcut icon" href="{{ "favicon.png" | absURL }}">
 {{ end }}
 
 <!-- Twitter Card -->
