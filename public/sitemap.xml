@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yanlong.me/tags/nginx/</loc>
+    <lastmod>2019-11-15T10:51:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yanlong.me/post/nginx-static-build/</loc>
+    <lastmod>2019-11-15T10:51:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yanlong.me/post/</loc>
+    <lastmod>2019-11-15T10:51:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yanlong.me/tags/</loc>
+    <lastmod>2019-11-15T10:51:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yanlong.me/</loc>
+    <lastmod>2019-11-15T10:51:55+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yanlong.me/tags/github/</loc>
     <lastmod>2019-11-07T11:46:04+08:00</lastmod>
   </url>
@@ -13,18 +38,8 @@
   </url>
   
   <url>
-    <loc>https://yanlong.me/post/</loc>
-    <lastmod>2019-11-07T11:46:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yanlong.me/tags/</loc>
-    <lastmod>2019-11-07T11:46:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yanlong.me/</loc>
-    <lastmod>2019-11-07T11:46:04+08:00</lastmod>
+    <loc>https://yanlong.me/tags/golang/</loc>
+    <lastmod>2019-10-30T19:12:51+08:00</lastmod>
   </url>
   
   <url>
@@ -73,6 +88,11 @@
   </url>
   
   <url>
+    <loc>https://yanlong.me/tags/docker/</loc>
+    <lastmod>2019-10-10T10:56:32+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yanlong.me/post/docker-multi-stage-build/</loc>
     <lastmod>2019-10-10T10:56:32+08:00</lastmod>
   </url>
@@ -93,6 +113,11 @@
   </url>
   
   <url>
+    <loc>https://yanlong.me/tags/php/</loc>
+    <lastmod>2019-07-31T16:31:04+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yanlong.me/post/send-http-request-using-eventloop/</loc>
     <lastmod>2019-07-31T16:31:04+08:00</lastmod>
   </url>
@@ -104,6 +129,11 @@
   
   <url>
     <loc>https://yanlong.me/post/custom-keyboard/</loc>
+    <lastmod>2017-01-18T16:35:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yanlong.me/tags/%E6%9C%BA%E6%A2%B0%E9%94%AE%E7%9B%98/</loc>
     <lastmod>2017-01-18T16:35:05+08:00</lastmod>
   </url>
   

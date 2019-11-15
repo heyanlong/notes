@@ -2,7 +2,7 @@
 title: "Nginx Preview"
 date: 2019-07-31T14:34:44+08:00
 draft: false
-
+tags: ["nginx"]
 ---
 
 ## 简单介绍

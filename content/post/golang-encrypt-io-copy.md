@@ -2,6 +2,7 @@
 title: "Golang Encrypt Io Copy"
 date: 2019-10-30T19:12:51+08:00
 draft: false
+tags: ["golang"]
 ---
 
 很多时候在两个机房传输数据的时候需要加密传输，加密传输的好处是防止中间人窃取信息。

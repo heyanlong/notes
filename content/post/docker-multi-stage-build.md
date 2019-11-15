@@ -2,6 +2,7 @@
 title: "Docker 多阶段构建"
 date: 2019-10-10T10:56:32+08:00
 draft: false
+tags: ["docker"]
 ---
 
 ## 为什么要使用多阶段构建

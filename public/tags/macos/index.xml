@@ -39,5 +39,14 @@
       <description>最近在参加公司举办的黑客马拉松比赛，由于使用到了OpenCV，简单记录一下如何在MacOS上安装OpenCV。 步骤1：安装Xcode Command Line Tools 由</description>
     </item>
     
+    <item>
+      <title>彻底删除Mac上的TeamViewer</title>
+      <link>https://yanlong.me/post/delete-team-viewer-in-full/</link>
+      <pubDate>Sat, 12 Oct 2019 10:29:40 +0800</pubDate>
+      
+      <guid>https://yanlong.me/post/delete-team-viewer-in-full/</guid>
+      <description>今天，微信群又炸锅了～，原因是TeamViewer这个大量使用的软件被某黑客组织拿下了后台系统，黑客可以攻击任何一台安装了TeamViewe</description>
+    </item>
+    
   </channel>
 </rss>

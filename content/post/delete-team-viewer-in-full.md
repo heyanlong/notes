@@ -2,6 +2,7 @@
 title: "彻底删除Mac上的TeamViewer"
 date: 2019-10-12T10:29:40+08:00
 draft: false
+tags: ["MacOS"]
 ---
 
 今天，微信群又炸锅了～，原因是TeamViewer这个大量使用的软件被某黑客组织拿下了后台系统，黑客可以攻击任何一台安装了TeamViewer的电脑，好恐怖的感觉。

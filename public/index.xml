@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>yanlong.me</copyright>
-    <lastBuildDate>Thu, 07 Nov 2019 11:46:04 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 15 Nov 2019 10:51:55 +0800</lastBuildDate>
     
 	<atom:link href="https://yanlong.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Nginx 静态编译</title>
+      <link>https://yanlong.me/post/nginx-static-build/</link>
+      <pubDate>Fri, 15 Nov 2019 10:51:55 +0800</pubDate>
+      
+      <guid>https://yanlong.me/post/nginx-static-build/</guid>
+      <description>在使用 docker多阶段部署 后，镜像大小得到了有效瘦身，部署速度大幅度提升。 最近需要在项目中放一个nginx来代理http请求到golang</description>
+    </item>
     
     <item>
       <title>Github Actions 简介</title>

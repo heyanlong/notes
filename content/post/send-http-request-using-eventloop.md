@@ -2,6 +2,7 @@
 title: "Send Http Request Using Eventloop"
 date: 2019-07-31T16:31:04+08:00
 draft: false
+tags: ["PHP"]
 ---
 
 最近公司发起了一个黑客马拉松大赛，要求发起N个http请求时常不能叠加，如请求两个接口每个接口耗时1秒，则响应应该在1.0x秒附近，而不是2秒或更久
