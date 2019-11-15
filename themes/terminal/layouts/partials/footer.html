@@ -1,0 +1,31 @@
+<footer class="footer">
+  <div class="footer__inner">
+    {{ if $.Site.Copyright }}
+      <div class="copyright copyright--user">
+        <span>© {{ now.Year }} Powered by <a href="https://yanlong.me">{{ $.Site.Copyright | safeHTML }}</a></span>
+    {{else}}
+      <div class="copyright">
+        <span>© {{ now.Year }} Powered by <a href="http://gohugo.io">Hugo</a></span>
+    {{end}}
+        <span>:: Theme made by panr</span>
+      </div>
+  </div>
+  <div class="footer__inner">
+      <div class="copyright copyright--user">
+        <span class="theme-info">
+          <a class="theme-link" href="https://yuerblog.cc/" target="_blank">鱼儿的博客</a>
+          <span class="division">|</span>
+          <a class="theme-link" href="http://www.is17.com/" target="_blank">依十七</a>
+          <span class="division">|</span>
+          <a class="theme-link" href="https://zzrdark.github.io/" target="_blank">zzrdark的技术专栏</a>
+          <span class="division">|</span>
+          <a class="theme-link" href="https://wujunze.com" target="_blank">吴钧泽博客</a>
+        </span>
+      </div>
+  </div>
+</footer>
+
+<script src="{{ "assets/main.js" | absURL }}"></script>
+
+<!-- Extended footer section-->
+{{ partial "extended_footer.html" . }}

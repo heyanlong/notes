@@ -1,0 +1,8 @@
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  background: #6c5ce7;
+  color: #FFF;
+  padding: 5px 10px;
+}
