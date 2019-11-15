@@ -66,3 +66,5 @@ jobs:
 ```shell
 */5 * * * * git -C /var/www/notes pull
 ```
+
+经过这么一套配置，只需写md然后推送到远程就行了，哎，太懒了
