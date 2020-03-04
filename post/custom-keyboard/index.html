@@ -1,11 +1,181 @@
-<!doctype html><html lang=zh-ch><head><title>Make Keyboard :: 火龙果的博客 — 分享学到的知识</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=description content="看到同事都在用机械键盘来编写世界上最好的语言，自己心里痒痒😂但是找来找去也没找到合适的，还是主要穷给闹的 后来在网上搜寻了一番找到了GH60和"><meta name=keywords content><meta name=robots content=noodp><link rel=canonical href=https://yanlong.me/post/custom-keyboard/><link rel=stylesheet href=https://yanlong.me/assets/style.css><link rel=stylesheet href=https://yanlong.me/assets/blue.css><link rel=apple-touch-icon-precomposed sizes=180x180 href=https://yanlong.me/favicon-apple.png><link rel="shortcut icon" href=https://yanlong.me/favicon.png><meta name=twitter:card content=summary><meta name=twitter:title content="Make Keyboard :: 火龙果的博客 — 分享学到的知识"><meta name=twitter:description content="看到同事都在用机械键盘来编写世界上最好的语言，自己心里痒痒😂但是找来找去也没找到合适的，还是主要穷给闹的 后来在网上搜寻了一番找到了GH60和"><meta name=twitter:site content=https://yanlong.me/><meta name=twitter:creator content><meta name=twitter:image content><meta property=og:locale content=zh-ch><meta property=og:type content=article><meta property=og:title content="Make Keyboard :: 火龙果的博客 — 分享学到的知识"><meta property=og:description content="看到同事都在用机械键盘来编写世界上最好的语言，自己心里痒痒😂但是找来找去也没找到合适的，还是主要穷给闹的 后来在网上搜寻了一番找到了GH60和"><meta property=og:url content=https://yanlong.me/post/custom-keyboard/><meta property=og:site_name content="Make Keyboard"><meta property=og:image content><meta property=og:image:width content=2048><meta property=og:image:height content=1024><meta property=article:published_time content="2017-01-18 16:35:05 &#43;0800 &#43;0800"><link rel=stylesheet href=/assets/github.min.css><script src=/assets/highlight.min.js></script><script>hljs.initHighlightingOnLoad();</script><script data-ad-client=ca-pub-4136853851848129 async src=https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-124887845-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());gtag('config','UA-124887845-1');</script></head><body><div class="container center"><header class=header><div class=header__inner><div class=header__logo><a href=https://yanlong.me/><div class=logo>火龙果的博客</div></a></div><div class=menu-trigger>menu</div></div></header><div class=content><div class=post><h1 class=post-title><a href=https://yanlong.me/post/custom-keyboard/>Make Keyboard</a></h1><div class=post-meta><span class=post-date>2017-01-18</span></div><span class=post-tags>#<a href=https://yanlong.me/tags/%E6%9C%BA%E6%A2%B0%E9%94%AE%E7%9B%98/>机械键盘</a>&nbsp;</span><div class=post-content><p>看到同事都在用机械键盘来编写世界上最好的语言，自己心里痒痒😂但是找来找去也没找到合适的，还是主要穷给闹的</p><p>后来在网上搜寻了一番找到了GH60和tmk_keyboard项目。软件硬件都有了😄搞起来</p><h2 id=准备>准备</h2><ol><li>PCB绘制工具KiCad</li><li>AVR C语言开发环境CrossPack-AVR</li><li>试轴器一个，包含黑，红，青，茶，四个常用轴体</li><li>制作材料一套，主要包含键盘冒，轴体若干，1N4148二级管若干，atmega32u4主控一个，恒温电烙铁一个，键盘壳一个</li></ol><h2 id=定制自己喜欢的布局>定制自己喜欢的布局</h2><p>可以使用的键盘布局编辑器网站定制喜欢的键盘布局，在原始GH60基础之上添加了方向键
-<img src=/images/keyboard-layout.png alt=keyboard></p><h2 id=根据布局开发pcb>根据布局开发PCB</h2><p>todo</p></div><img src=/images/qrcode.png width=300px style="margin:0 auto"><div class=pagination><div class=pagination__title><span class=pagination__title-h></span><hr></div><div class=pagination__buttons><span class="button previous"><a href=https://yanlong.me/post/nginx-preview/><span class=button__icon>←</span>
-<span class=button__text>Nginx Preview</span></a></span></div></div></div></div><footer class=footer><div class=footer__inner><div class="copyright copyright--user"><span>© 2019 Powered by <a href=https://yanlong.me>yanlong.me</a></span>
-<span>:: Theme made by panr</span></div></div><div class=footer__inner><div class="copyright copyright--user"><span class=theme-info><a class=theme-link href=https://yuerblog.cc/ target=_blank>鱼儿的博客</a>
-<span class=division>|</span>
-<a class=theme-link href=http://www.is17.com/ target=_blank>依十七</a>
-<span class=division>|</span>
-<a class=theme-link href=https://zzrdark.github.io/ target=_blank>zzrdark的技术专栏</a>
-<span class=division>|</span>
-<a class=theme-link href=https://wujunze.com target=_blank>吴钧泽博客</a></span></div></div></footer><script src=https://yanlong.me/assets/main.js></script></div></body></html>
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Make Keyboard - 火龙果的博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-124887845-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+                <script data-ad-client="ca-pub-4136853851848129" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="火龙果的博客" rel="home">
+				<div class="logo__title">火龙果的博客</div>
+				<div class="logo__tagline">🥳No Code no Bugs</div>
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Make Keyboard</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>看到同事都在用机械键盘来编写世界上最好的语言，自己心里痒痒😂但是找来找去也没找到合适的，还是主要穷给闹的</p>
+<p>后来在网上搜寻了一番找到了GH60和tmk_keyboard项目。软件硬件都有了😄搞起来</p>
+<h2 id="准备">准备</h2>
+<ol>
+<li>PCB绘制工具KiCad</li>
+<li>AVR C语言开发环境CrossPack-AVR</li>
+<li>试轴器一个，包含黑，红，青，茶，四个常用轴体</li>
+<li>制作材料一套，主要包含键盘冒，轴体若干，1N4148二级管若干，atmega32u4主控一个，恒温电烙铁一个，键盘壳一个</li>
+</ol>
+<h2 id="定制自己喜欢的布局">定制自己喜欢的布局</h2>
+<p>可以使用的键盘布局编辑器网站定制喜欢的键盘布局，在原始GH60基础之上添加了方向键
+<img src="/images/keyboard-layout.png" alt="keyboard"></p>
+<h2 id="根据布局开发pcb">根据布局开发PCB</h2>
+<p>todo</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/%E6%9C%BA%E6%A2%B0%E9%94%AE%E7%9B%98/" rel="tag">机械键盘</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Yanlong avatar" src="/img/avatar.jpeg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">关于 Yanlong</span>
+	</div>
+	<div class="authorbox__description">
+		程序员 / Apache Committer / PECL成员
+	</div>
+</div>
+
+
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://yanlong.me/" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/deploy-blog-use-github-actions/">使用Github Actions自动编译部署基于的hugo博客</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/nginx-static-build/">Nginx 静态编译</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/github-actions/">Github Actions 简介</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/golang-encrypt-io-copy/">Golang Encrypt Io Copy</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/mix-eye/">使用tensorflow和OpenCV合并人眼</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/install-dlib-on-macos/">在MacOS上安装Dlib</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/install-opencv-on-macos/">在MacOS上安装OpenCV</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/delete-team-viewer-in-full/">彻底删除Mac上的TeamViewer</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/docker-multi-stage-build/">Docker 多阶段构建</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/leave-yuanf/">离开开元金融</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/macos/" title="MacOS">MacOS</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/opencv/" title="OpenCV">OpenCV</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/php/" title="PHP">PHP</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="Python">Python</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tensorflow/" title="tensorflow">tensorflow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%BA%E6%A2%B0%E9%94%AE%E7%9B%98/" title="机械键盘">机械键盘</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">社交</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/YanlongHe" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/heyanlong" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Email" href="mailto:yanlong.hee@gmail.com">
+				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
+				<span>yanlong.hee@gmail.com</span>
+			</a>
+		</div>
+
+		
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		<div class="footer__links">
+	<a class="footer__link" href="https://zzrdark.github.io/" target="_blank">zzrdark的技术专栏</a> | <a class="footer__link" href="http://www.is17.com/" target="_blank">依十七</a> | <a class="footer__link" href="https://wujunze.com/" target="_blank">吴钧泽博客</a> | <a class="footer__link" href="https://yuerblog.cc/" target="_blank">鱼儿的博客</a>
+</div>
+
+		<div class="footer__copyright">
+			&copy; 2020 yanlong.me.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>主題</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>
