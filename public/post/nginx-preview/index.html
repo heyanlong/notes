@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Nginx Preview - 火龙果的博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-124887845-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+                <script data-ad-client="ca-pub-4136853851848129" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="火龙果的博客" rel="home">
+				<div class="logo__title">火龙果的博客</div>
+				<div class="logo__tagline">🥳No Code no Bugs</div>
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Nginx Preview</h1>
+			
+		</header><div class="content post__content clearfix">
+			<h2 id="简单介绍">简单介绍</h2>
+<p>2004年发布第一个版本，2011年成立公司提供商业支持，2019年3月被F5 6.7亿美元收购</p>
+<p>拥有反向代理，负载均衡，http缓存等功能</p>
+<h2 id="特点">特点</h2>
+<p>为fastcgi 提供负载均衡</p>
+<p>采用epoll非阻塞io模型提供高并发能力</p>
+<h2 id="apache">Apache</h2>
+<p>作为当时全球使用率最高的http 服务器，nginx的目标就是超越apache性能并已高性能为切入点抢占http 服务器市场</p>
+<p>apache 采用select 模型，nginx 采用epoll模型，由于技术选型原因，nginx拥有先天优势带来高性能</p>
+<h2 id="模块">模块</h2>
+<h3 id="http">http</h3>
+<ol>
+<li>ngx_http_core_module</li>
+<li>ngx_http_access_module 提供基础黑名单白名单功能</li>
+<li>ngx_http_addition_module 在请求之前或者之后添加文本</li>
+<li>ngx_http_api_module 提供 REST API 用来查看nginx各种状态</li>
+<li>ngx_http_auth_basic_module HTTP基本身份验证判断是否有权限</li>
+<li>ngx_http_auth_jwt_module jwt验证</li>
+<li>ngx_http_auth_request_module 根据请求授权是否可以访问</li>
+<li>ngx_http_autoindex_module 自动生成文件夹列表</li>
+<li>ngx_http_browser_module 判断浏览器是否是现代浏览器与ie</li>
+<li>ngx_http_charset_module 设置响应字符集</li>
+<li>ngx_http_dav_module WebDAV 模块</li>
+<li>ngx_http_empty_gif_module 空白图片输出</li>
+<li>ngx_http_f4f_module Adobe HTTP动态流</li>
+<li>ngx_http_fastcgi_module fastcgi支持</li>
+<li>ngx_http_flv_module flv视频支持</li>
+<li>ngx_http_geo_module 使用ip地址进行变量映射</li>
+<li>ngx_http_geoip_module 使用ip地址进行区域位置转换</li>
+<li>ngx_http_grpc_module grpc代理</li>
+<li>ngx_http_gunzip_module 在header中有gzip压缩选型但是客户端不支持gzip的时候生效</li>
+<li>ngx_http_gzip_module 使用gzip传输数据</li>
+<li>ngx_http_gzip_static_module 压缩后的文件存储为.gz 下次请求时直接输出文件</li>
+<li>ngx_http_headers_module 追加响应header</li>
+<li>ngx_http_hls_module 对视频文件提供实时流访问</li>
+<li>ngx_http_image_filter_module 对图片进行旋转，剪切</li>
+<li>ngx_http_index_module 入口执行文件</li>
+<li>ngx_http_js_module js模块</li>
+<li>ngx_http_keyval_module 定义key val变量</li>
+<li>ngx_http_limit_conn_module 限制某个ip的连接数</li>
+<li>ngx_http_limit_req_module 限制某个ip的请求数，使用漏桶规则</li>
+<li>ngx_http_log_module 日志</li>
+<li>ngx_http_map_module 定义map变量</li>
+<li>ngx_http_memcached_module 代理memcached</li>
+<li>ngx_http_mirror_module 镜像网站</li>
+<li>ngx_http_mp4_module mp4流式传输</li>
+<li>ngx_http_perl_module</li>
+<li>ngx_http_proxy_module 代理http</li>
+<li>ngx_http_random_index_module 随机index</li>
+<li>ngx_http_realip_module  ip替换</li>
+<li>ngx_http_referer_module 阻止无效Referer</li>
+<li>ngx_http_rewrite_module uri 重写</li>
+<li>ngx_http_scgi_module scgi代理</li>
+<li>ngx_http_secure_link_module 检查请求链路的真实性</li>
+<li>ngx_http_session_log_module</li>
+<li>ngx_http_slice_module 将一个请求拆分为多个请求</li>
+<li>ngx_http_spdy_module</li>
+<li>ngx_http_split_clients_module 定义ab测试变量，不同的客户端拆分到不同的后端</li>
+<li>ngx_http_ssi_module ssi 支持，将文件潜入到网页</li>
+<li>ngx_http_ssl_module ssl支持</li>
+<li>ngx_http_status_module nginx 状态</li>
+<li>ngx_http_stub_status_module nginx基本状态</li>
+<li>ngx_http_sub_module 替换字符串来修改响应结果</li>
+<li>ngx_http_upstream_module upstream模块</li>
+<li>ngx_http_upstream_conf_module 通过http请求动态配置upstrem</li>
+<li>ngx_http_upstream_hc_module upstream中的服务器进行健康检查</li>
+<li>ngx_http_userid_module 基于cookie设置客户端唯一标标识</li>
+<li>ngx_http_uwsgi_module uwsgi 代理</li>
+<li>ngx_http_v2_module http2.0</li>
+<li>ngx_http_xslt_module 使用XSLT 转换 xml</li>
+</ol>
+<h3 id="mail">mail</h3>
+<ol>
+<li>ngx_mail_core_module</li>
+<li>ngx_mail_auth_http_module</li>
+<li>ngx_mail_proxy_module</li>
+<li>ngx_mail_ssl_module</li>
+<li>ngx_mail_imap_module</li>
+<li>ngx_mail_pop3_module</li>
+<li>ngx_mail_smtp_module</li>
+</ol>
+<h3 id="stream">stream</h3>
+<ol>
+<li>ngx_stream_core_module</li>
+<li>ngx_stream_access_module</li>
+<li>ngx_stream_geo_module</li>
+<li>ngx_stream_geoip_module</li>
+<li>ngx_stream_js_module</li>
+<li>ngx_stream_keyval_module</li>
+<li>ngx_stream_limit_conn_module</li>
+<li>ngx_stream_log_module</li>
+<li>ngx_stream_map_module</li>
+<li>ngx_stream_proxy_module</li>
+<li>ngx_stream_realip_module</li>
+<li>ngx_stream_return_module</li>
+<li>ngx_stream_split_clients_module</li>
+<li>ngx_stream_ssl_module</li>
+<li>ngx_stream_ssl_preread_module</li>
+<li>ngx_stream_upstream_module</li>
+<li>ngx_stream_upstream_hc_module</li>
+<li>ngx_stream_zone_sync_module</li>
+</ol>
+<h3 id="other">other</h3>
+<ol>
+<li>ngx_google_perftools_module</li>
+</ol>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/nginx/" rel="tag">nginx</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Yanlong avatar" src="/img/avatar.jpeg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">关于 Yanlong</span>
+	</div>
+	<div class="authorbox__description">
+		程序员 / Apache Committer / PECL成员
+	</div>
+</div>
+
+
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://yanlong.me/" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/deploy-blog-use-github-actions/">使用Github Actions自动编译部署基于的hugo博客</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/nginx-static-build/">Nginx 静态编译</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/github-actions/">Github Actions 简介</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/golang-encrypt-io-copy/">Golang Encrypt Io Copy</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/mix-eye/">使用tensorflow和OpenCV合并人眼</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/install-dlib-on-macos/">在MacOS上安装Dlib</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/install-opencv-on-macos/">在MacOS上安装OpenCV</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/delete-team-viewer-in-full/">彻底删除Mac上的TeamViewer</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/docker-multi-stage-build/">Docker 多阶段构建</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/leave-yuanf/">离开开元金融</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/macos/" title="MacOS">MacOS</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/opencv/" title="OpenCV">OpenCV</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/php/" title="PHP">PHP</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="Python">Python</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tensorflow/" title="tensorflow">tensorflow</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%BA%E6%A2%B0%E9%94%AE%E7%9B%98/" title="机械键盘">机械键盘</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">社交</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/YanlongHe" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/heyanlong" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Email" href="mailto:yanlong.hee@gmail.com">
+				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
+				<span>yanlong.hee@gmail.com</span>
+			</a>
+		</div>
+
+		
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		<div class="footer__links">
+	<a class="footer__link" href="https://zzrdark.github.io/" target="_blank">zzrdark的技术专栏</a> | <a class="footer__link" href="http://www.is17.com/" target="_blank">依十七</a> | <a class="footer__link" href="https://wujunze.com/" target="_blank">吴钧泽博客</a> | <a class="footer__link" href="https://yuerblog.cc/" target="_blank">鱼儿的博客</a>
+</div>
+
+		<div class="footer__copyright">
+			&copy; 2020 yanlong.me.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>主題</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

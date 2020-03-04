@@ -1,22 +1,52 @@
-baseURL = "https://yanlong.me/"
+baseurl = "https://yanlong.me/"
 languageCode = "zh-cn"
-defaultContentLanguage = "zh-ch"
-theme = "terminal"
+defaultContentLanguage = "zh-cn"
+theme = "mainroad"
 title = "火龙果的博客"
-paginate = 5
+paginate = 10
+googleAnalytics = "UA-124887845-1"
+googleAdsense = "ca-pub-4136853851848129"
 
 hasCJKLanguage = true
 
-copyright = "yanlong.me"
+[menu]
+  [[menu.footer]]
+    url = "https://wujunze.com/"
+    name = "吴钧泽博客"
+    target = "_blank"
+  [[menu.footer]]
+    url = "https://zzrdark.github.io/"
+    name = "zzrdark的技术专栏"
+    target = "_blank"
+  [[menu.footer]]
+    url = "https://yuerblog.cc/"
+    name = "鱼儿的博客"
+    target = "_blank"
+  [[menu.footer]]
+    url = "http://www.is17.com/"
+    name = "依十七"
+    target = "_blank"
+    
 
-[author]
+[Author]
   name = "Yanlong"
+  bio = "程序员 / Apache Committer / PECL成员"
+  avatar = "img/avatar.jpeg"
 
-[params]
-    contentTypeName = "post"
-    fullWidthTheme = false
-    centerTheme = true
-    themeColor = "blue"
-    subtitle = "分享学到的知识"
-[params.logo]
-    logoText = "火龙果的博客"
+[Params]
+    subtitle = "🥳No Code no Bugs"
+    copyright = "yanlong.me"
+    readmore = true
+    authorbox = true
+    highlightColor = "#e22d30"
+
+[Params.sidebar]
+  home = "right"
+  list = "right"
+  single = true
+  widgets = ["search", "recent", "categories", "taglist", "social", "languages"]
+
+[Params.widgets.social]
+  twitter = "YanlongHe"
+  github = "heyanlong"
+  email = "yanlong.hee@gmail.com"
