@@ -1,5 +1,5 @@
 ---
-title: "使用Github Actions自动编译部署基于的hugo博客"
+title: "使用Github Actions自动编译部署基于hugo的博客"
 date: 2019-11-15T16:51:03+08:00
 draft: false
 tags: ["github"]

@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>使用Github Actions自动编译部署基于的hugo博客</title>
+      <title>使用Github Actions自动编译部署基于hugo的博客</title>
       <link>https://yanlong.me/post/deploy-blog-use-github-actions/</link>
       <pubDate>Fri, 15 Nov 2019 16:51:03 +0800</pubDate>
       
