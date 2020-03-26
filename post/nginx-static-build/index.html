@@ -1,53 +1,53 @@
 <!doctype html><html class=no-js lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>Nginx 静态编译 - 火龙果的博客</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/css/style.css><link rel="shortcut icon" href=/favicon.ico><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-124887845-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><script data-ad-client=ca-pub-4136853851848129 async src=https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script></head><body class=body><div class="container container--outer"><header class=header><div class=container><div class=logo><a class=logo__link href=/ title=火龙果的博客 rel=home><div class=logo__title>火龙果的博客</div><div class=logo__tagline>🥳No Code no Bugs</div></a></div><div class=divider></div></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>Nginx 静态编译</h1></header><div class="content post__content clearfix"><p>在使用 <a href=https://yanlong.me/post/docker-multi-stage-build/>docker多阶段部署</a> 后，镜像大小得到了有效瘦身，部署速度大幅度提升。</p><p>最近需要在项目中放一个nginx来代理http请求到golang，一般来说nginx编译都是动态编译模式，会依赖很多系统so。如果只是单纯的把nginx的binary复制到docker 第二阶段，会导致
-在新的image中找不到依赖的so文件，从而nginx不能正常工作。</p><p>第一想到的就是可以静态编译nginx，让依赖的所有so都集成到binary里面，这样就可以复制整个nginx目录到新image。</p><h2 id=静态编译>静态编译</h2><p>由于线上环境是ubuntu 16.04，为了兼容性，我们找一台ubuntu 16.04机器进行打包。</p><h3 id=创建临时打包环境>创建临时打包环境</h3><pre><code class=language-shell>$ docker run -it ubuntu:16.04 bash
-</code></pre><h3 id=编译nginx>编译nginx</h3><pre><code class=language-shell># 下载openssl依赖
+在新的image中找不到依赖的so文件，从而nginx不能正常工作。</p><p>第一想到的就是可以静态编译nginx，让依赖的所有so都集成到binary里面，这样就可以复制整个nginx目录到新image。</p><h2 id=静态编译>静态编译</h2><p>由于线上环境是ubuntu 16.04，为了兼容性，我们找一台ubuntu 16.04机器进行打包。</p><h3 id=创建临时打包环境>创建临时打包环境</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ docker run -it ubuntu:16.04 bash
+</code></pre></div><h3 id=编译nginx>编译nginx</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># 下载openssl依赖</span>
 $ wget https://www.openssl.org/source/openssl-1.0.2g.tar.gz
 
-# 下载nginx
+<span style=color:#75715e># 下载nginx</span>
 $ wget http://nginx.org/download/nginx-1.16.1.tar.gz
 
-# 解压openssl &amp; 解压nginx
+<span style=color:#75715e># 解压openssl &amp; 解压nginx</span>
 $ tar zxvf openssl-1.0.2g.tar.gz
 $ tar zxvf nginx-1.16.1.tar.gz
 
-# configure nginx
-# 这一步很关键，需要添加cc 和 ld 选项
-# openssl 也必须用源码，要不然不会成功
+<span style=color:#75715e># configure nginx</span>
+<span style=color:#75715e># 这一步很关键，需要添加cc 和 ld 选项</span>
+<span style=color:#75715e># openssl 也必须用源码，要不然不会成功</span>
 $ cd nginx-1.16.1
-$ ./configure --with-cc-opt='-static -static-libgcc' --with-ld-opt=-static --prefix=/usr/local/nginx --user=root --group=root --with-http_ssl_module --with-openssl=../openssl-1.0.2g
+$ ./configure --with-cc-opt<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;-static -static-libgcc&#39;</span> --with-ld-opt<span style=color:#f92672>=</span>-static --prefix<span style=color:#f92672>=</span>/usr/local/nginx --user<span style=color:#f92672>=</span>root --group<span style=color:#f92672>=</span>root --with-http_ssl_module --with-openssl<span style=color:#f92672>=</span>../openssl-1.0.2g
 
-# 编译 安装
-$ make &amp;&amp; make install
+<span style=color:#75715e># 编译 安装</span>
+$ make <span style=color:#f92672>&amp;&amp;</span> make install
 
-# 如果需要更快速度的编译，可以加上-j选项，启动多核心同时编译，比如40核处理器
-# make -j40 &amp;&amp; make install
+<span style=color:#75715e># 如果需要更快速度的编译，可以加上-j选项，启动多核心同时编译，比如40核处理器</span>
+<span style=color:#75715e># make -j40 &amp;&amp; make install</span>
 
-# 打包整个nginx包，上传到私有仓库，这里我用static.yanlong.me模拟私有仓库
+<span style=color:#75715e># 打包整个nginx包，上传到私有仓库，这里我用static.yanlong.me模拟私有仓库</span>
 $ cd /usr/local
 $ tar zcvf nginx-static-1.16.1.tar.gz nginx
 
 $ scp nginx-static-1.16.1.tar.gz root@static.yanlong.me:/var/static/libraries
-</code></pre><h2 id=多阶段打包>多阶段打包</h2><p>上面步骤已经准备好了nginx的静态编译包，现在我们只需在多阶段部署时添加进去即可。</p><pre><code class=language-dockerfile># 第一阶段
-FROM ubuntu:16.04 as build-env
-
-RUN apt-get update -y &amp;&amp; \
-    apt-get install --no-install-recommends -y make curl tar unzip ca-certificates &amp;&amp; apt-get install gcc -y
-
-# 下载已经编译好的二进制包，这样可以加快CI速度
-RUN curl -o nginx-static-1.16.1.tar.gz https://static.yanlong.me/libraries/nginx-static-1.16.1.tar.gz &amp;&amp; tar zxf nginx-static-1.16.1.tar.gz &amp;&amp; mv nginx /usr/local/
-
-# 第二阶段
-FROM ubuntu:16.04
-# 把第一阶段下载的nginx包复制到当前阶段
-COPY --from=build-env /usr/local/nginx/ /usr/local/nginx/
-</code></pre><h2 id=测试>测试</h2><pre><code class=language-shell>docker run -it ubuntu:nginx bash
-# 在容器内shell运行
+</code></pre></div><h2 id=多阶段打包>多阶段打包</h2><p>上面步骤已经准备好了nginx的静态编译包，现在我们只需在多阶段部署时添加进去即可。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dockerfile data-lang=dockerfile><span style=color:#75715e># 第一阶段</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> ubuntu:16.04 as build-env</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> apt-get update -y <span style=color:#f92672>&amp;&amp;</span> <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    apt-get install --no-install-recommends -y make curl tar unzip ca-certificates <span style=color:#f92672>&amp;&amp;</span> apt-get install gcc -y<span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># 下载已经编译好的二进制包，这样可以加快CI速度</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> curl -o nginx-static-1.16.1.tar.gz https://static.yanlong.me/libraries/nginx-static-1.16.1.tar.gz <span style=color:#f92672>&amp;&amp;</span> tar zxf nginx-static-1.16.1.tar.gz <span style=color:#f92672>&amp;&amp;</span> mv nginx /usr/local/<span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># 第二阶段</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> ubuntu:16.04</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># 把第一阶段下载的nginx包复制到当前阶段</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> --from<span style=color:#f92672>=</span>build-env /usr/local/nginx/ /usr/local/nginx/<span style=color:#960050;background-color:#1e0010>
+</span></code></pre></div><h2 id=测试>测试</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>docker run -it ubuntu:nginx bash
+<span style=color:#75715e># 在容器内shell运行</span>
 /usr/local/nginx/sbin/nginx -t
 
-# 输出
-# nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
-# nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
-</code></pre><p>经过这样改动，CI速度大幅度提升，docker image占用空间也得到了优化。</p></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/nginx/ rel=tag>nginx</a></li></ul></div></footer></article></main><div class="authorbox clearfix"><figure class=authorbox__avatar><img alt="Yanlong avatar" src=/img/avatar.jpeg class=avatar height=90 width=90></figure><div class=authorbox__header><span class=authorbox__name>关于 Yanlong</span></div><div class=authorbox__description>程序员 / Apache Committer / PECL成员</div></div></div><aside class=sidebar><div class="widget-search widget"><form class=widget-search__form role=search method=get action=https://google.com/search><label><input class=widget-search__field type=search placeholder=搜索... name=q aria-label=搜索...></label>
+<span style=color:#75715e># 输出</span>
+<span style=color:#75715e># nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok</span>
+<span style=color:#75715e># nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful</span>
+</code></pre></div><p>经过这样改动，CI速度大幅度提升，docker image占用空间也得到了优化。</p></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/nginx/ rel=tag>nginx</a></li></ul></div></footer></article></main><div class="authorbox clearfix"><figure class=authorbox__avatar><img alt="Yanlong avatar" src=/img/avatar.jpeg class=avatar height=90 width=90></figure><div class=authorbox__header><span class=authorbox__name>关于 Yanlong</span></div><div class=authorbox__description>程序员 / Apache Committer / PECL成员</div></div></div><aside class=sidebar><div class="widget-search widget"><form class=widget-search__form role=search method=get action=https://google.com/search><label><input class=widget-search__field type=search placeholder=搜索... name=q aria-label=搜索...></label>
 <input class=widget-search__submit type=submit value=Search>
 <input type=hidden name=sitesearch value=https://yanlong.me/></form></div><div class="widget-recent widget"><h4 class=widget__title>近期文章</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/post/ffmpeg-gpu/>编译并使用GPU加速的ffmpeg</a></li><li class=widget__item><a class=widget__link href=/post/deploy-blog-use-github-actions/>使用Github Actions自动编译部署基于hugo的博客</a></li><li class=widget__item><a class=widget__link href=/post/nginx-static-build/>Nginx 静态编译</a></li><li class=widget__item><a class=widget__link href=/post/github-actions/>Github Actions 简介</a></li><li class=widget__item><a class=widget__link href=/post/golang-encrypt-io-copy/>Golang Encrypt Io Copy</a></li><li class=widget__item><a class=widget__link href=/post/mix-eye/>使用tensorflow和OpenCV合并人眼</a></li><li class=widget__item><a class=widget__link href=/post/install-dlib-on-macos/>在MacOS上安装Dlib</a></li><li class=widget__item><a class=widget__link href=/post/install-opencv-on-macos/>在MacOS上安装OpenCV</a></li><li class=widget__item><a class=widget__link href=/post/delete-team-viewer-in-full/>彻底删除Mac上的TeamViewer</a></li><li class=widget__item><a class=widget__link href=/post/docker-multi-stage-build/>Docker 多阶段构建</a></li></ul></div></div><div class="widget-taglist widget"><h4 class=widget__title>标签</h4><div class=widget__content><a class="widget-taglist__link widget__link btn" href=/tags/docker/ title=docker>docker</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/ffmpeg/ title=ffmpeg>ffmpeg</a>
