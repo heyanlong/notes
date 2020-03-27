@@ -2,8 +2,12 @@
 title: "使用Github Actions自动编译部署基于hugo的博客"
 date: 2019-11-15T16:51:03+08:00
 draft: false
+categories:
+  - "Github"
 tags: ["github"]
 keywords: ["GitHub", "Actions", "GitHub actions", "hugo", "ACTIONS_DEPLOY_KEY"]
+
+thumbnail: /images/deploy-blog-use-github-actions/hugo.png 
 ---
 
 在GitHub推出actions功能后，利用GitHub托管博客源码变得更加方便快捷，这里分享一下本站自动化部署的方式。

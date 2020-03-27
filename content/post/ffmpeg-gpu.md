@@ -4,6 +4,12 @@ date: 2020-03-26T14:26:03+08:00
 draft: false
 tags: ["ffmpeg", "nvidia"]
 keywords: ["ffmpeg", "nvidia", "GPU", "hugo"]
+
+categories:
+  - "计算机视觉"
+  - "AI"
+
+thumbnail: "/images/ffmpeg-gpu/images.jpeg"
 ---
 
 最近在开发一款基于视频流的视频分析系统。在使用浏览器播放处理完成的视频时，浏览器需要fmp4格式的数据流，需要通过ffmpeg进行转码。在开发阶段使用的时CPU版本的ffmpeg，线上部署后效果非常不理想。索性编译了一个GPU版本的，做个记录。

@@ -2,9 +2,12 @@
 title: "Github Actions 简介"
 date: 2019-11-07T11:46:04+08:00
 draft: false
-cover: "/images/github-actions/actions.png"
 tags: ["github"] 
 keywords: ["github", "github actions", "ci", "cd", "持续集成", "持续部署"]
+categories:
+  - "Github"
+
+thumbnail: "/images/github-actions/actions.png"
 ---
 
 在开发 [Apache SkyWalking CLI](https://github.com/apache/skywalking-cli) 时，使用到了GitHub Actions，GitHub Actions可以灵活地构建自动化的软件开发工作流。可以编写单个任务，并将其组合以创建自定义工作流程。工作流是自定义的自动化流程，可以在存储库中对其进行设置，以在GitHub上构建，测试，打包，发布或部署任何代码项目。

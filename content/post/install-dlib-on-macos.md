@@ -2,9 +2,12 @@
 title: "在MacOS上安装Dlib"
 date: 2019-10-30T17:29:44+08:00
 draft: false
-cover: "/images/install-dlib-on-macos/install-dlib-on-macos.jpg"
+thumbnail: "/images/install-dlib-on-macos/install-dlib-on-macos.jpg"
 tags: ["MacOS", "OpenCV", "Python"]
 keywords: ["MacOS", "OSX", "python", "dlib", "安装dlib", "install dlib on macos"]
+categories:
+  - "计算机视觉"
+  - "AI"
 ---
 
 

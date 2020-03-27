@@ -2,10 +2,14 @@
 title: "在MacOS上安装OpenCV"
 date: 2019-10-27T10:54:44+08:00
 draft: false
-cover: "/images/install-opencv-on-macos/install-opencv-3-on-macos.jpg"
+thumbnail: "/images/install-opencv-on-macos/install-opencv-3-on-macos.jpg"
 tags: ["MacOS", "OpenCV", "Python"]
 keywords: ["MacOS", "OSX", "python", "opencv", "安装opencv", "install opencv on macos", "xcode-select", "xcode command line tools"]
 description: "在MacOS安装Opencv，install opencv on macos"
+
+categories:
+  - "计算机视觉"
+  - "AI"
 ---
 
 

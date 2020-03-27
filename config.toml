@@ -38,6 +38,8 @@ hasCJKLanguage = true
     copyright = "yanlong.me"
     readmore = true
     authorbox = true
+    post_meta = ["date", "categories"]
+    dateformat = "2006-01-02"
     highlightColor = "#e22d30"
 
 [Params.sidebar]

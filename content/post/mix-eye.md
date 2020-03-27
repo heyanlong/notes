@@ -4,6 +4,10 @@ date: 2019-10-30T18:33:22+08:00
 draft: false
 tags: ["MacOS", "OpenCV", "Python", "tensorflow"]
 keywords: ["MacOS", "OSX", "python", "ai换脸", "合影修复"]
+
+categories:
+  - "计算机视觉"
+  - "AI"
 ---
 
 在很多时候对摄影师而言，合影一直是摄影师之痛。很多时候的场景是，都站好了，拍完一看有人闭眼了，这个时候是再拍一张还是就这样呢？？
