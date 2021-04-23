@@ -46,6 +46,12 @@ def rot90(frame, width=1920, height=1080):
     for i in range(int(width / 2)):
         uv = frame[height:, i * 2:i * 2 + 2][::-1, :].reshape(1, height)
         out[width + i:width + i + 1] = uv
+
+    values = []
+    for k in range(math.ceil(height / 64) * 64 - height):
+        values.append([0])
+    out = np.insert(out, height, values=values, axis=1)
+
     return out.ravel()
 ```
 
