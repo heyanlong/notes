@@ -36,8 +36,54 @@ KERNEL=="video*", ATTRS{idVendor}=="32e4", ATTRS{idProduct}=="9422", MODE:="0777
 ```
 
 如果多个设备的idVendor和idProduct都一样，可以使用KERNELS来区分
+
+执行代码得到KERNELS编码
+
 ```shell
-KERNELS=="1-7:1-0" SYMLINK+="usb_video_0"
+udevadm info --attribute-walk --name=/dev/video0
+
+# 返回数据如下
+  looking at device '/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/video4linux/video0':
+    KERNEL=="video0"
+    SUBSYSTEM=="video4linux"
+    DRIVER==""
+    ATTR{dev_debug}=="0"
+    ATTR{index}=="0"
+    ATTR{name}=="H264 USB Camera"
+
+  looking at parent device '/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0':
+    KERNELS=="1-3:1.0"
+    SUBSYSTEMS=="usb"
+    DRIVERS=="uvcvideo"
+    ATTRS{authorized}=="1"
+    ATTRS{bAlternateSetting}==" 0"
+    ATTRS{bInterfaceClass}=="0e"
+    ATTRS{bInterfaceNumber}=="00"
+    ATTRS{bInterfaceProtocol}=="00"
+    ATTRS{bInterfaceSubClass}=="01"
+    ATTRS{bNumEndpoints}=="01"
+    ATTRS{iad_bFirstInterface}=="00"
+    ATTRS{iad_bFunctionClass}=="0e"
+    ATTRS{iad_bFunctionProtocol}=="00"
+    ATTRS{iad_bFunctionSubClass}=="03"
+    ATTRS{iad_bInterfaceCount}=="03"
+    ATTRS{interface}=="USB Camera"
+    ATTRS{supports_autosuspend}=="1"
+
+  looking at parent device '/devices/pci0000:00/0000:00:14.0/usb1/1-3':
+    KERNELS=="1-3"
+    SUBSYSTEMS=="usb"
+    DRIVERS=="usb"
+    ATTRS{authorized}=="1"
+    ATTRS{avoid_reset_quirk}=="0"
+    ATTRS{bConfigurationValue}=="1"
+
+```
+
+可以看到第三级里面的`KERNELS=="1-3"`每个设备是不一样的，因此可以用此属性对设备进行区分
+
+```shell
+KERNEL=="video*", KERNELS=="1-3" ATTRS{idVendor}=="32e4", ATTRS{idProduct}=="9422", MODE:="0777", SYMLINK+="usb_video_0"
 ```
 
 然后执行命令让规则生效
