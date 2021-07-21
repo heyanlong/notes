@@ -4,7 +4,7 @@ defaultContentLanguage = "zh-cn"
 theme = "mainroad"
 title = "火龙果的博客"
 paginate = 10
-googleAnalytics = "UA-124887845-1"
+googleAnalytics = "G-RBZ1RJH1W8"
 googleAdsense = "ca-pub-4136853851848129"
 
 hasCJKLanguage = true
