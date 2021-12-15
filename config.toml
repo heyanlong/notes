@@ -15,8 +15,8 @@ hasCJKLanguage = true
     name = "吴钧泽博客"
     target = "_blank"
   [[menu.footer]]
-    url = "https://zzrdark.github.io/"
-    name = "zzrdark的技术专栏"
+    url = "https://jicki.cn/"
+    name = "小炒肉"
     target = "_blank"
   [[menu.footer]]
     url = "https://yuerblog.cc/"
