@@ -30,6 +30,10 @@ hasCJKLanguage = true
     url = "https://www.jjcbs.com/"
     name = "流苏@编程随想"
     target = "_blank"
+  [[menu.footer]]
+    url = "https://www.cpu7.com/"
+    name = "CPU7"
+    target = "_blank"
     
 
 [Author]
