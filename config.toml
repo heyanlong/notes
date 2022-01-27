@@ -54,7 +54,7 @@ hasCJKLanguage = true
   home = "right"
   list = "right"
   single = true
-  widgets = ["search", "recent", "categories", "taglist", "social", "languages"]
+  widgets = ["search", "sponsors", "recent", "categories", "taglist", "social", "languages"]
 
 [Params.widgets.social]
   twitter = "YanlongHe"
