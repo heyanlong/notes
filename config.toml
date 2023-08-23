@@ -34,6 +34,10 @@ hasCJKLanguage = true
     url = "https://www.cpu7.com/"
     name = "CPU7"
     target = "_blank"
+  [[menu.footer]]
+    url = "https://ppxai.com/"
+    name = "皮皮星球"
+    target = "_blank"
     
 
 [Author]
