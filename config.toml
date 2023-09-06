@@ -38,6 +38,14 @@ hasCJKLanguage = true
     url = "https://ppxai.com/"
     name = "皮皮星球"
     target = "_blank"
+  [[menu.footer]]
+    url = "https://leetcodebook-1.gitbook.io/top-interview-150/"
+    name = "Leetcode面试题解"
+    target = "_blank"
+  [[menu.footer]]
+    url = "https://alpherjang.github.io/"
+    name = "打酱油的程序员"
+    target = "_blank"
     
 
 [Author]
